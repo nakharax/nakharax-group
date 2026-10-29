@@ -1,0 +1,776 @@
+<!doctype html>
+<html lang="en" data-lang-mode="bilingual" data-theme="cosmic">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#05060b" />
+    <meta
+      name="description"
+      content="NakharaX Group — Engineering intelligence. Building with purpose. Explore our connected solar system of technology and human ambition."
+    />
+    <title>NakharaX Group — Solar System &amp; Ecosystem</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="brand.css" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+
+    <!-- Floating Glassmorphic Command Header -->
+    <header id="site-header">
+      <div class="header-pill">
+        <a class="brand" href="#home" aria-label="NakharaX Group home">
+          <span class="brand-icon-frame">
+            <img class="brand-icon" src="assets/nakharax-icon.png" alt="" width="40" height="40" />
+          </span>
+          <span class="brand-wordmark">
+            NAKHARA<span class="gold">X</span>
+            <small>G R O U P</small>
+          </span>
+        </a>
+
+        <nav id="primary-nav" aria-label="Main navigation">
+          <a href="#vision" data-nav="vision">
+            <span class="nav-idx">01</span>
+            <span class="en-txt">Our vision</span>
+            <span class="th-inline" lang="th">วิสัยทัศน์</span>
+          </a>
+          <a href="#ecosystem" data-nav="ecosystem">
+            <span class="nav-idx">02</span>
+            <span class="en-txt">Ecosystem</span>
+            <span class="th-inline" lang="th">ระบบนิเวศ</span>
+          </a>
+          <a href="#intelligence" data-nav="intelligence">
+            <span class="nav-idx">03</span>
+            <span class="en-txt">Intelligence</span>
+            <span class="th-inline" lang="th">ปัญญาประดิษฐ์</span>
+          </a>
+          <a href="#connect" data-nav="connect">
+            <span class="nav-idx">04</span>
+            <span class="en-txt">Connect</span>
+            <span class="th-inline" lang="th">เชื่อมต่อ</span>
+          </a>
+        </nav>
+
+        <div class="header-actions">
+          <div class="theme-switch" role="group" aria-label="Atmosphere theme">
+            <button type="button" data-theme-set="cosmic" aria-pressed="true" title="Cosmic Dark Mode">✦ Cosmic</button>
+            <button type="button" data-theme-set="pearl" aria-pressed="false" title="Pearlescent Light Mode">☀ Pearl</button>
+          </div>
+
+          <div class="lang-switch" role="group" aria-label="Language display mode">
+            <button type="button" data-lang-set="bilingual" aria-pressed="true" title="Bilingual English + Thai">EN·TH</button>
+            <button type="button" data-lang-set="en" aria-pressed="false" title="English only">EN</button>
+            <button type="button" data-lang-set="th" aria-pressed="false" title="ภาษาไทย">ไทย</button>
+          </div>
+
+          <a class="nav-cta" href="#connect">
+            <span class="en-txt">Connect</span>
+            <span class="th-only" lang="th">ติดต่อเรา</span>
+            <span class="arrow">↗</span>
+          </a>
+
+          <button
+            type="button"
+            id="menu-toggle"
+            class="menu-toggle"
+            aria-expanded="false"
+            aria-controls="primary-nav"
+            aria-label="Toggle navigation menu"
+          >
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO SECTION: Interactive 3D Solar System & Command Deck -->
+      <section id="home" class="hero">
+        <div
+          id="universe"
+          role="region"
+          tabindex="0"
+          data-view="orbit"
+          aria-label="Interactive NakharaX 3D Solar System"
+          aria-describedby="scene-help"
+        ></div>
+        <div class="shade"></div>
+
+        <div class="hero-stage">
+          <div class="hero-copy">
+            <div class="status-pill">
+              <span class="pulse-dot"></span>
+              <p class="eyebrow">
+                <i></i>
+                <span class="en-txt">INDEPENDENT MINDS. ONE SHARED ORBIT.</span>
+                <span class="th-only" lang="th">ความคิดที่เป็นอิสระ บนวงโคจรแห่งเป้าหมายเดียวกัน</span>
+              </p>
+            </div>
+
+            <h1>
+              <span class="en-txt">Beyond ideas.<br />Into <em>impact.</em></span>
+              <span class="th-only" lang="th">ก้าวข้ามขีดจำกัดความคิด<br />สู่<em>ผลลัพธ์ที่มีความหมาย</em></span>
+            </h1>
+
+            <p class="hero-th-sub" lang="th">
+              สถาปัตยกรรมแห่งอนาคตที่เชื่อมโยงความมุ่งมั่นของมนุษย์ วิศวกรรมเชิงลึก และปัญญาประดิษฐ์เข้าด้วยกันภายใต้ระบบสุริยะเดียวกัน
+            </p>
+            <p class="intro">
+              A connected world of human ambition,<br />engineering, and
+              artificial intelligence.
+            </p>
+
+            <div class="actions">
+              <a class="button" href="#ecosystem">
+                <span>
+                  <span class="en-txt">Explore our universe</span>
+                  <span class="th-only" lang="th">สำรวจจักรวาลของเรา</span>
+                </span>
+                <span aria-hidden="true">↗</span>
+              </a>
+              <button type="button" class="text-button" id="film-open">
+                <span class="play">▶</span> Watch the vision
+              </button>
+            </div>
+
+            <!-- Quick Planetary Orbit Strip -->
+            <div class="hero-mini-orbits" aria-label="Active planetary orbits">
+              <a href="#ecosystem" class="mini-orbit-chip" data-quick-mission="xpfirm">
+                <span class="chip-idx">01</span>
+                <div>
+                  <strong>XpFirm</strong>
+                  <small>Planet I · Risk &amp; Discipline</small>
+                </div>
+              </a>
+              <a href="#ecosystem" class="mini-orbit-chip" data-quick-mission="protocol">
+                <span class="chip-idx">02</span>
+                <div>
+                  <strong>NakharaX Protocol</strong>
+                  <small>Planet II · Dedicated Orbit</small>
+                </div>
+              </a>
+              <a href="#ecosystem" class="mini-orbit-chip" data-quick-mission="hermes">
+                <span class="chip-idx">03</span>
+                <div>
+                  <strong>AI Workforce</strong>
+                  <small>Planet III · Hermes Ops</small>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Unified Floating Glass Telemetry & Solar Camera Dock -->
+        <div class="hero-hud">
+          <div class="hud-card ship-label">
+            <span class="cross">☉</span>
+            <div>
+              <strong>NX—SOLAR / GRAVITATIONAL SYSTEM</strong>
+              <small>
+                <span class="en-txt">One central star. Independent planetary missions.</span>
+                <span class="th-only" lang="th">หนึ่งดาวฤกษ์ศูนย์กลาง สู่ดาวเคราะห์แห่งความเป็นไปได้</span>
+              </small>
+            </div>
+            <a class="scroll-cue" href="#vision">
+              <span class="en-txt">SCROLL TO DISCOVER</span>
+              <span class="th-only" lang="th">เลื่อนเพื่อสำรวจ</span>
+              <span>↓</span>
+            </a>
+          </div>
+
+          <div
+            class="hud-card view-preset"
+            role="group"
+            aria-label="Solar system camera view"
+          >
+            <div class="preset-top">
+              <span>EXPLORE THE SOLAR SYSTEM</span>
+              <output id="telemetry-angles" aria-live="off">YAW 012° · INCLINATION +09°</output>
+            </div>
+            <div class="preset-group">
+              <button type="button" data-view="orbit" aria-pressed="true">01 / Orbit</button>
+              <button type="button" data-view="profile" aria-pressed="false">02 / Profile</button>
+              <button type="button" data-view="core" aria-pressed="false">03 / Core</button>
+              <button type="button" data-view="zenith" aria-pressed="false">04 / Zenith</button>
+            </div>
+            <p id="scene-help">
+              Drag to orbit · Focus scene + ← → ↑ ↓ to rotate · Home to reset
+            </p>
+          </div>
+
+          <div class="hud-card hero-bottom">
+            <div class="scene-tools">
+              <span id="scene-state" aria-live="polite">INITIALIZING 3D</span>
+              <div class="tool-btn-row">
+                <button type="button" id="motion" aria-pressed="false">Pause motion</button>
+                <button type="button" id="reset">Reset view</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="vertical" aria-hidden="true">ENGINEERED TO CONNECT · BUILT WITH PURPOSE</div>
+      </section>
+
+      <!-- SECTION 01: OUR NORTH STAR — Architectural Bento Grid -->
+      <section id="vision" class="vision section">
+        <div class="section-container">
+          <div class="bento-header">
+            <p class="section-index">01 / OUR NORTH STAR</p>
+            <h2>
+              <span class="en-txt">
+                Not a collection of companies.<br /><span>A constellation of possibilities.</span>
+              </span>
+              <span class="th-only" lang="th">
+                ไม่ใช่เพียงกลุ่มบริษัท<br /><span>แต่คือกลุ่มดาวแห่งความเป็นไปได้</span>
+              </span>
+            </h2>
+          </div>
+
+          <div class="vision-bento">
+            <!-- Left Monolith Card: Supplied Artwork in Iridescent Prism Gallery Frame -->
+            <div class="bento-monolith brand-story">
+              <div class="monolith-top">
+                <span class="mono-badge">IDENTITY PRISM // NX-00</span>
+                <span class="mono-dot"></span>
+              </div>
+              <figure class="brand-art">
+                <div class="brand-art-halo" aria-hidden="true"></div>
+                <div class="brand-art-surface">
+                  <img
+                    src="assets/nakharax-brand.webp"
+                    width="1254"
+                    height="1254"
+                    loading="lazy"
+                    alt="NakharaX logo: a luminous pearlescent N ribbon above the NAKHARAX wordmark and nakharax.com"
+                  />
+                </div>
+                <figcaption class="brand-meta">
+                  <span>LUMINOUS RIBBON MARK</span>
+                  <span>NAKHARAX.COM</span>
+                </figcaption>
+              </figure>
+            </div>
+
+            <!-- Right Bento Stack: Bilingual Manifestos & 3 Architectural Pillars -->
+            <div class="bento-right">
+              <div class="vision-bottom">
+                <div class="manifesto-card th-card">
+                  <div class="card-kicker">
+                    <span>TH // CORE PHILOSOPHY</span>
+                    <i></i>
+                  </div>
+                  <p lang="th">
+                    เราสร้างพื้นที่ให้ความเชี่ยวชาญของมนุษย์และศักยภาพของ AI
+                    มาร่วมกันเปลี่ยนความคิดให้เป็นผลงานที่มีความหมาย
+                  </p>
+                </div>
+
+                <div class="manifesto-card en-card">
+                  <div class="card-kicker">
+                    <span>EN // SHARED ARCHITECTURE</span>
+                    <i></i>
+                  </div>
+                  <p>
+                    Our central star connects the vision. Each venture orbits with its own
+                    mission. Together, we build with clarity, discipline, and purpose.
+                  </p>
+                </div>
+              </div>
+
+              <div class="pillars-bento" aria-label="Core architectural principles">
+                <article class="pillar-card">
+                  <div class="pillar-head">
+                    <span class="pillar-idx">01 // CLARITY</span>
+                    <span class="pillar-glyph">◈</span>
+                  </div>
+                  <strong lang="th">ความชัดเจนในเป้าหมายและขอบเขต</strong>
+                  <p>Every venture begins with an explicit problem boundary, transparent scope, and disciplined engineering architecture.</p>
+                </article>
+
+                <article class="pillar-card">
+                  <div class="pillar-head">
+                    <span class="pillar-idx">02 // DISCIPLINE</span>
+                    <span class="pillar-glyph">◎</span>
+                  </div>
+                  <strong lang="th">วินัยเชิงระบบและการตระหนักรู้ความเสี่ยง</strong>
+                  <p>Built around preparation, risk awareness, and repeatable decision-making rather than speculative hype.</p>
+                </article>
+
+                <article class="pillar-card">
+                  <div class="pillar-head">
+                    <span class="pillar-idx">03 // PURPOSE</span>
+                    <span class="pillar-glyph">✦</span>
+                  </div>
+                  <strong lang="th">เทคโนโลยีที่ขับเคลื่อนด้วยความรับผิดชอบของมนุษย์</strong>
+                  <p>Machine intelligence amplifies execution speed while human judgment retains direction and final accountability.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 02: THE ECOSYSTEM — Interactive Solar System Command Center -->
+      <section id="ecosystem" class="ecosystem section">
+        <div class="section-container">
+          <div class="section-head">
+            <div>
+              <p class="section-index">02 / THE ECOSYSTEM</p>
+              <h2>
+                <span class="en-txt">Different missions.<br />One gravitational core.</span>
+                <span class="th-only" lang="th">ภารกิจที่แตกต่าง<br />ภายใต้แรงดึงดูดแกนกลางเดียวกัน</span>
+              </h2>
+            </div>
+            <p class="section-subtitle">
+              <span class="en-txt">Select an orbit.<br />Discover what we're building.</span>
+              <span class="th-inline" lang="th">เลือกวงโคจรของดาวเคราะห์แต่ละดวงเพื่อสำรวจโปรเจกต์ของเรา</span>
+            </p>
+          </div>
+
+          <div class="orbit-layout">
+            <!-- Interactive SVG + HTML Solar Radar -->
+            <div class="orbit-map" aria-label="Select an ecosystem mission">
+              <div class="radar-grid-bg" aria-hidden="true"></div>
+              <svg class="orbit-svg" viewBox="0 0 680 500" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+                <defs>
+                  <radialGradient id="prismCoreGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#e5c896" stop-opacity="0.34" />
+                    <stop offset="35%" stop-color="#38bdf8" stop-opacity="0.22" />
+                    <stop offset="65%" stop-color="#8b5cf6" stop-opacity="0.14" />
+                    <stop offset="100%" stop-color="#05060b" stop-opacity="0" />
+                  </radialGradient>
+                  <linearGradient id="vectorBeam" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#e5c896" stop-opacity="0.95" />
+                    <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.9" />
+                    <stop offset="100%" stop-color="#c084fc" stop-opacity="0.95" />
+                  </linearGradient>
+                </defs>
+
+                <circle cx="340" cy="250" r="220" fill="url(#prismCoreGlow)" />
+                <line x1="40" y1="250" x2="640" y2="250" stroke="rgba(148,163,184,0.1)" stroke-dasharray="3 6" />
+                <line x1="340" y1="30" x2="340" y2="470" stroke="rgba(148,163,184,0.1)" stroke-dasharray="3 6" />
+
+                <g transform="rotate(-18 340 250)">
+                  <ellipse cx="340" cy="250" rx="125" ry="82" fill="none" stroke="rgba(56,189,248,0.32)" stroke-width="1.3" stroke-dasharray="5 6" />
+                  <ellipse cx="340" cy="250" rx="205" ry="136" fill="none" stroke="rgba(168,85,247,0.3)" stroke-width="1.3" />
+                  <ellipse cx="340" cy="250" rx="285" ry="190" fill="none" stroke="rgba(229,200,150,0.28)" stroke-width="1.3" stroke-dasharray="2 5" />
+                </g>
+
+                <!-- Dynamic Vector Beam from Central Sun to Active Planet Node -->
+                <line id="orbit-beam" x1="340" y1="250" x2="465" y2="105" stroke="url(#vectorBeam)" stroke-width="2.2" stroke-dasharray="6 4" />
+                <circle id="orbit-target-pulse" cx="465" cy="105" r="24" fill="none" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.65" />
+              </svg>
+
+              <div class="orbit o1"></div>
+              <div class="orbit o2"></div>
+              <div class="orbit o3"></div>
+
+              <div class="orbit-center">
+                <div class="orbit-core-ring">
+                  <img class="orbit-brand-icon" src="assets/nakharax-icon.png" alt="NakharaX Group" width="60" height="60" />
+                </div>
+                <small>CENTRAL STAR</small>
+              </div>
+
+              <button
+                type="button"
+                class="node node-x active"
+                data-mission="xpfirm"
+                data-coords="465,105"
+                aria-pressed="true"
+              >01 <strong>XpFirm</strong><span>↗</span></button>
+
+              <button
+                type="button"
+                class="node node-p"
+                data-mission="protocol"
+                data-coords="135,305"
+                aria-pressed="false"
+              >02 <strong>NakharaX Protocol</strong><span>↗</span></button>
+
+              <button
+                type="button"
+                class="node node-h"
+                data-mission="hermes"
+                data-coords="460,385"
+                aria-pressed="false"
+              >03 <strong>AI Workforce</strong><span>↗</span></button>
+
+              <div class="radar-bottom-bar">
+                <span class="map-caption">SOLAR SYSTEM MAP / CONCEPTUAL VIEW</span>
+                <div class="orbit-stepper" aria-label="Cycle ecosystem missions">
+                  <button type="button" id="mission-prev" aria-label="Previous mission">←</button>
+                  <span id="mission-counter">01 / 03</span>
+                  <button type="button" id="mission-next" aria-label="Next mission">→</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Synchronized Mission Dossier Card -->
+            <article class="mission-panel" id="mission-card" aria-live="polite">
+              <div>
+                <div class="dossier-header">
+                  <p class="eyebrow" id="mission-tag">01 / TRADER WORKSPACE</p>
+                  <span class="dossier-status" id="mission-orbit-badge">ORBIT 01 // ACTIVE DIRECTION</span>
+                </div>
+
+                <h3 id="mission-title">XpFirm<span>↗</span></h3>
+
+                <p id="mission-description">
+                  A Trader Risk &amp; Discipline Workspace. Designed around preparation,
+                  risk awareness, and consistent decision-making — not the promise
+                  of returns.
+                </p>
+
+                <p class="mission-th" id="mission-th" lang="th">
+                  พื้นที่ทำงานเพื่อการบริหารความเสี่ยงและวินัยสำหรับเทรดเดอร์ ออกแบบมาเพื่อการเตรียมตัว การประเมินความเสี่ยง และความสม่ำเสมอในการตัดสินใจ ไม่ใช่การสัญญาผลตอบแทน
+                </p>
+
+                <div class="mission-rule"></div>
+
+                <p class="mission-detail" id="mission-detail">
+                  Free Core Forever is the product direction. Business and ecosystem
+                  services support the wider vision.
+                </p>
+
+                <div class="dossier-specs">
+                  <div class="spec-box">
+                    <span class="spec-label">PRIMARY FOCUS</span>
+                    <strong id="mission-meta-focus">Risk &amp; Discipline</strong>
+                  </div>
+                  <div class="spec-box">
+                    <span class="spec-label">OPERATING MODEL</span>
+                    <strong id="mission-meta-model">Free Core Forever</strong>
+                  </div>
+                  <div class="spec-box">
+                    <span class="spec-label">GOVERNANCE</span>
+                    <strong id="mission-meta-gov">Transparent Scope</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dossier-footer">
+                <a
+                  id="mission-link"
+                  class="dossier-cta"
+                  href="https://github.com/nakharax/nakharax-xpfirm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >View project on GitHub ↗</a>
+                <small id="mission-note">Project direction · not a claim of public launch</small>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 03: INTELLIGENCE — Interactive Hermes Governance Architecture -->
+      <section id="intelligence" class="intelligence section">
+        <div class="section-container">
+          <div class="intelligence-top">
+            <div>
+              <p class="section-index">03 / HUMAN DIRECTION. MACHINE LEVERAGE.</p>
+              <h2>
+                <span class="en-txt">
+                  Intelligence is powerful.<br /><em>Direction makes it matter.</em>
+                </span>
+                <span class="th-only" lang="th">
+                  พลังของ AI นั้นยิ่งใหญ่<br /><em>แต่ทิศทางจากมนุษย์คือสิ่งที่ทำให้มีความหมาย</em>
+                </span>
+              </h2>
+              <p class="intelligence-th-lead" lang="th">
+                Hermes ประสานงานทีม AI เฉพาะทางภายใต้การกำกับดูแลของมนุษย์ มนุษย์เป็นผู้กำหนดเป้าหมาย ขอบเขต และรับผิดชอบต่อผลลัพธ์สุดท้ายเสมอ
+              </p>
+            </div>
+
+            <div class="intelligence-copy">
+              <p>
+                Hermes brings the AI workforce into a shared operating vision.
+                People define the purpose, set the boundaries, and remain
+                accountable.
+              </p>
+              <p>AI amplifies the work.<br />Human judgment stays at the helm.</p>
+              <span class="fine">CONCEPTUAL ARCHITECTURE — NOT LIVE TELEMETRY</span>
+            </div>
+          </div>
+
+          <!-- Interactive 4-Stage Pipeline Inspector -->
+          <div class="pipeline-console">
+            <div class="flow" role="tablist" aria-label="Hermes orchestration pipeline stages">
+              <button
+                type="button"
+                class="flow-node active"
+                role="tab"
+                aria-selected="true"
+                data-stage="intent"
+              >
+                <span class="node-step">STAGE 01</span>
+                <strong>HUMAN INTENT</strong>
+                <small lang="th">กำหนดเป้าหมายและขอบเขต</small>
+              </button>
+
+              <b aria-hidden="true">→</b>
+
+              <button
+                type="button"
+                class="flow-node"
+                role="tab"
+                aria-selected="false"
+                data-stage="orchestration"
+              >
+                <span class="node-step">STAGE 02</span>
+                <strong>HERMES ORCHESTRATION</strong>
+                <small lang="th">จัดสรรงานตามสิทธิ์อย่างรัดกุม</small>
+              </button>
+
+              <b aria-hidden="true">→</b>
+
+              <button
+                type="button"
+                class="flow-node"
+                role="tab"
+                aria-selected="false"
+                data-stage="workforce"
+              >
+                <span class="node-step">STAGE 03</span>
+                <strong>SPECIALIST AI WORKFORCE</strong>
+                <small lang="th">ทีม AI เฉพาะทางดำเนินงาน</small>
+              </button>
+
+              <b aria-hidden="true">→</b>
+
+              <button
+                type="button"
+                class="flow-node"
+                role="tab"
+                aria-selected="false"
+                data-stage="verified"
+              >
+                <span class="node-step">STAGE 04</span>
+                <strong>VERIFIED WORK</strong>
+                <small lang="th">ตรวจสอบและรับรองโดยมนุษย์</small>
+              </button>
+            </div>
+
+            <div class="stage-inspector" id="flow-detail-card" aria-live="polite">
+              <div class="inspector-main">
+                <div class="inspector-badges">
+                  <span class="eyebrow" id="stage-code">STAGE 01 / HUMAN GOVERNANCE</span>
+                  <span class="boundary-pill" id="stage-boundary">ACCOUNTABILITY: HUMAN OPERATOR</span>
+                </div>
+                <h3 id="stage-title">Human Intent &amp; Explicit Boundaries</h3>
+                <p id="stage-desc">
+                  Every operation originates from explicit human intent. Leadership and domain operators define the mission objective, ethical guardrails, and strict operational scope before any task enters orchestration.
+                </p>
+                <p class="stage-th" id="stage-th" lang="th">
+                  ทุกภารกิจเริ่มต้นจากความตั้งใจของมนุษย์ ผู้ดูแลระบบกำหนดวัตถุประสงค์ ขอบเขตการทำงาน และเกณฑ์ความปลอดภัยอย่างชัดเจนก่อนส่งต่อให้ระบบ
+                </p>
+              </div>
+
+              <div class="inspector-matrix">
+                <div class="matrix-cell">
+                  <span>HUMAN AUTHORITY</span>
+                  <strong id="stage-human-role">Defines objective, scope &amp; risk limits</strong>
+                </div>
+                <div class="matrix-cell">
+                  <span>MACHINE LEVERAGE</span>
+                  <strong id="stage-ai-role">Validates context &amp; readiness</strong>
+                </div>
+                <div class="matrix-cell">
+                  <span>SAFETY GATE</span>
+                  <strong id="stage-gate">Zero unapproved autonomous action</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 04: THE NEXT ORBIT -->
+      <section id="connect" class="connect section">
+        <div class="connect-portal">
+          <div class="portal-glow" aria-hidden="true"></div>
+          <p class="section-index">04 / THE NEXT ORBIT</p>
+          <h2>
+            <span class="en-txt">
+              The future isn't somewhere we go.<br /><em>It's something we build.</em>
+            </span>
+            <span class="th-only" lang="th">
+              อนาคตไม่ใช่จุดหมายที่เราเพียงเดินทางไปถึง<br /><em>แต่คือสิ่งที่เราร่วมกันสร้างขึ้น</em>
+            </span>
+          </h2>
+          <p class="connect-th" lang="th">
+            ร่วมสำรวจงานวิศวกรรม โครงสร้างระบบ และโปรเจกต์ในเครือ NakharaX Group ผ่าน GitHub
+          </p>
+          <div class="connect-buttons">
+            <a
+              class="button"
+              href="https://github.com/nakharax"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Connect with NakharaX</span>
+              <span>↗</span>
+            </a>
+            <a
+              class="secondary-button"
+              href="https://github.com/nakharax/nakharax-xpfirm"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>Explore XpFirm on GitHub</span>
+              <span>↗</span>
+            </a>
+          </div>
+          <p class="fine">Explore our work and connect through GitHub.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a class="footer-brand" href="#home">NAKHARAX GROUP</a>
+      <span>HUMAN AMBITION × ENGINEERED INTELLIGENCE</span>
+      <span>SOLAR SYSTEM EDITION / V4</span>
+      <a href="#home">BACK TO TOP ↑</a>
+    </footer>
+
+    <dialog id="film" aria-label="NakharaX Solar System motion study">
+      <div class="dialog-head">
+        <p class="eyebrow">NAKHARAX GROUP / SOLAR SYSTEM VISION FILM</p>
+        <button type="button" id="film-close" aria-label="Close film">✕</button>
+      </div>
+      <div class="film-stage-wrap">
+        <video
+          id="vision-video"
+          controls
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          poster="assets/mothership-poster.jpg"
+        >
+          <source id="src-mp4" src="assets/mothership-motion.mp4" type="video/mp4" />
+          <source id="src-webm" src="assets/mothership-motion.webm" type="video/webm" />
+        </video>
+      </div>
+      <div class="film-chapters" role="group" aria-label="Film chapters">
+        <button type="button" class="film-chap-btn active" data-chap-time="0" data-chap-view="orbit">
+          <span>01</span> THE CENTRAL SUN
+        </button>
+        <button type="button" class="film-chap-btn" data-chap-time="1.0" data-chap-view="profile">
+          <span>02</span> EARTH · XPFIRM
+        </button>
+        <button type="button" class="film-chap-btn" data-chap-time="2.0" data-chap-view="core">
+          <span>03</span> JUPITER · PROTOCOL
+        </button>
+        <button type="button" class="film-chap-btn" data-chap-time="3.0" data-chap-view="zenith">
+          <span>04</span> SATURN · HERMES AI
+        </button>
+      </div>
+      <p class="fine">
+        Motion study rendered from the interactive 3D Solar System V4 scene · Click any chapter above to jump.
+      </p>
+    </dialog>
+
+    <script>
+      // Resilient standalone film modal & chapter controller (works even if module CDN is offline)
+      (function () {
+        const openBtn = document.getElementById("film-open");
+        const closeBtn = document.getElementById("film-close");
+        const dlg = document.getElementById("film");
+        const vid = document.getElementById("vision-video");
+        let blobReady = false;
+
+        function dataUriToBlobUrl(dataUri) {
+          try {
+            const parts = dataUri.split(",");
+            const mime = parts[0].match(/:(.*?);/)[1];
+            const bstr = atob(parts[1]);
+            let n = bstr.length;
+            const u8 = new Uint8Array(n);
+            while (n--) u8[n] = bstr.charCodeAt(n);
+            return URL.createObjectURL(new Blob([u8], { type: mime }));
+          } catch (e) {
+            return null;
+          }
+        }
+
+        function ensureVideoPlayable() {
+          if (!vid || blobReady) return;
+          blobReady = true;
+          const sMp4 = document.getElementById("src-mp4");
+          const sWebm = document.getElementById("src-webm");
+          const canMp4 = vid.canPlayType && vid.canPlayType('video/mp4; codecs="avc1.42E01E"') !== "";
+          const chosen = (canMp4 && sMp4) ? sMp4 : (sWebm || sMp4);
+          if (chosen) {
+            const rawSrc = chosen.getAttribute("src") || "";
+            if (rawSrc.startsWith("data:")) {
+              const bUrl = dataUriToBlobUrl(rawSrc);
+              if (bUrl) {
+                vid.src = bUrl;
+              } else {
+                vid.src = rawSrc;
+              }
+            }
+          }
+          vid.muted = true;
+          vid.load();
+        }
+
+        if (openBtn && dlg) {
+          openBtn.addEventListener("click", function () {
+            if (!dlg.open) {
+              dlg.showModal();
+            }
+            ensureVideoPlayable();
+            if (vid) {
+              vid.muted = true;
+              const p = vid.play();
+              if (p && typeof p.catch === "function") {
+                p.catch(function () {});
+              }
+            }
+          });
+        }
+
+        if (closeBtn && dlg) {
+          closeBtn.addEventListener("click", function () {
+            if (dlg.open) dlg.close();
+          });
+        }
+
+        if (dlg && vid) {
+          dlg.addEventListener("close", function () {
+            vid.pause();
+          });
+        }
+
+        document.querySelectorAll(".film-chap-btn").forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            document.querySelectorAll(".film-chap-btn").forEach(function (b) {
+              b.classList.toggle("active", b === btn);
+            });
+            const t = parseFloat(btn.getAttribute("data-chap-time") || "0");
+            if (vid) {
+              ensureVideoPlayable();
+              try {
+                vid.currentTime = t;
+              } catch (e) {}
+              const p = vid.play();
+              if (p && typeof p.catch === "function") p.catch(function () {});
+            }
+            const viewKey = btn.getAttribute("data-chap-view");
+            if (viewKey) {
+              const vBtn = document.querySelector('[data-view="' + viewKey + '"]');
+              if (vBtn) vBtn.click();
+            }
+          });
+        });
+      })();
+    </script>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

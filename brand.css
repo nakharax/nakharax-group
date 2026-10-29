@@ -1,0 +1,100 @@
+/* Supplied NakharaX artwork: no recoloring, blending or background removal. */
+.brand-icon-frame {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5px;
+  border-radius: 11px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.55), rgba(168, 85, 247, 0.5), rgba(244, 114, 182, 0.45));
+  box-shadow: 0 4px 18px rgba(139, 92, 246, 0.28);
+  flex: 0 0 auto;
+}
+.brand-icon {
+  display: block;
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  border-radius: 8.5px;
+  flex: 0 0 auto;
+}
+.brand-art {
+  position: relative;
+  margin: 0;
+  width: 100%;
+  max-width: 340px;
+}
+.brand-art-halo {
+  position: absolute;
+  inset: -14px;
+  z-index: 0;
+  border-radius: 28px;
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(56, 189, 248, 0.28),
+    rgba(168, 85, 247, 0.24) 45%,
+    rgba(244, 114, 182, 0.14) 70%,
+    transparent 85%
+  );
+  filter: blur(20px);
+  pointer-events: none;
+}
+.brand-art-surface {
+  position: relative;
+  z-index: 1;
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 6px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.24), rgba(168, 85, 247, 0.2), rgba(56, 189, 248, 0.22));
+  box-shadow: 0 20px 50px rgba(4, 6, 14, 0.55);
+}
+.brand-art img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 11px;
+}
+.brand-meta {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  padding: 0 4px;
+  font: 9px/1.4 var(--font-label);
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+.orbit-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 2;
+  pointer-events: none;
+}
+.orbit-core-ring {
+  padding: 4px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.6), rgba(168, 85, 247, 0.55), rgba(223, 198, 155, 0.6));
+  box-shadow:
+    0 0 42px rgba(139, 92, 246, 0.42),
+    0 10px 28px rgba(0, 0, 0, 0.55);
+}
+.orbit-brand-icon {
+  display: block;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+.orbit-center small {
+  text-align: center;
+  margin-top: 10px;
+  font: 8px/1.2 var(--font-label);
+  letter-spacing: 3px;
+  color: var(--gold);
+}
