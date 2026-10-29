@@ -8,21 +8,21 @@
 @font-face {
   font-family: "Space Grotesk";
   font-style: normal;
-  font-weight: 500 700;
+  font-weight: 500 600;
   font-display: swap;
   src: url("assets/fonts/SpaceGrotesk-Medium.ttf") format("truetype");
 }
 @font-face {
-  font-family: "NakharaSolarDisplay";
+  font-family: "Space Grotesk";
   font-style: normal;
-  font-weight: 400 900;
+  font-weight: 700 900;
   font-display: swap;
-  src: url("assets/fonts/NakharaSolarDisplay.ttf") format("truetype");
+  src: url("assets/fonts/SpaceGrotesk-Bold.ttf") format("truetype");
 }
 @font-face {
   font-family: "Noto Sans Thai";
   font-style: normal;
-  font-weight: 400 500;
+  font-weight: 300 500;
   font-display: swap;
   src: url("assets/fonts/NotoSansThai-Regular.ttf") format("truetype");
 }
@@ -49,9 +49,10 @@
   --border: rgba(148, 163, 184, 0.16);
   --border-prism: rgba(56, 189, 248, 0.34);
   --shadow-card: 0 24px 60px rgba(2, 4, 12, 0.65);
-  --font-body: "Space Grotesk", "Noto Sans Thai", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-editorial: Georgia, "Times New Roman", serif;
-  --font-label: "Courier New", ui-monospace, monospace;
+  --font-body: "Space Grotesk", "Noto Sans Thai", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-editorial: "Space Grotesk", "Noto Sans Thai", sans-serif;
+  --font-label: "Space Grotesk", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Noto Sans Thai", monospace;
+  --sans: "Space Grotesk", "Noto Sans Thai", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 /* PEARLESCENT LIGHT MODE — Harmonizes directly with the pearlescent NakharaX logo */
@@ -113,6 +114,27 @@ html[data-lang-mode="th"] .th-only {
 }
 html[data-lang-mode="th"] .th-inline {
   display: none !important;
+}
+
+/* Universal Thai Typography Polish */
+[lang="th"],
+:lang(th),
+.th-only,
+.th-inline,
+.hero-th-sub,
+.mission-th,
+.intelligence-th-lead,
+.stage-th,
+.connect-th {
+  font-family: "Noto Sans Thai", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.7;
+}
+
+h1 [lang="th"],
+h2 [lang="th"],
+h3 [lang="th"] {
+  font-weight: 700;
+  line-height: 1.25;
 }
 
 ::selection {
@@ -423,8 +445,9 @@ h1 {
 }
 
 em {
-  font-family: var(--font-editorial);
-  font-weight: 400;
+  font-family: inherit;
+  font-style: italic;
+  font-weight: 600;
   background: linear-gradient(135deg, #38bdf8 0%, #c084fc 52%, #f472b6 78%, #e5c896 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -1689,7 +1712,7 @@ button:disabled {
    Matches the bold 3D-extruded cosmic typography of 20488946.jpg
    ============================================================================ */
 :root {
-  --display: "NakharaSolarDisplay", "Noto Sans Thai", "Space Grotesk", system-ui, -apple-system, sans-serif;
+  --display: "Space Grotesk", "Noto Sans Thai", system-ui, -apple-system, sans-serif;
 }
 
 h1,

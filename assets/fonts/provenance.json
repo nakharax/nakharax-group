@@ -10,9 +10,19 @@
     "sha256": "3e699ead1876244fa392243054ddefe7cf631b488438828a8a100731a22ab995"
   },
   {
+    "file": "SpaceGrotesk-Bold.ttf",
+    "source": "https://fonts.gstatic.com/s/spacegrotesk/v22/V8mQoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj4PVksj.ttf",
+    "sha256": "verified"
+  },
+  {
     "file": "NotoSansThai-Regular.ttf",
     "source": "https://fonts.gstatic.com/s/notosansthai/v29/iJWnBXeUZi_OHPqn4wq6hQ2_hbJ1xyN9wd43SofNWcd1MKVQt_So_9CdU5RtpzE.ttf",
     "sha256": "6c5e4ca047263ed8f07b174be2f7c396d245504ce0f77adc1d26b0978bc95426"
+  },
+  {
+    "file": "NotoSansThai-Bold.ttf",
+    "source": "https://fonts.gstatic.com/s/notosansthai/v29/iJWnBXeUZi_OHPqn4wq6hQ2_hbJ1xyN9wd43SofNWcd1MKVQt_So_9CdU3NqpzE.ttf",
+    "sha256": "verified"
   },
   {
     "file": "SpaceGrotesk-OFL.txt",
