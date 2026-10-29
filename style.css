@@ -387,16 +387,14 @@ nav a:hover {
   position: absolute;
   inset: 0;
   z-index: -1;
-  background:
-    linear-gradient(90deg, var(--bg) 0%, rgba(5, 6, 13, 0.78) 38%, rgba(5, 6, 13, 0.12) 68%, transparent 100%),
-    linear-gradient(0deg, var(--bg) 0%, transparent 22%);
+  background: transparent;
   pointer-events: none;
+  display: none !important;
 }
 
 html[data-theme="pearl"] .shade {
-  background:
-    linear-gradient(90deg, rgba(243, 245, 251, 0.95) 0%, rgba(243, 245, 251, 0.75) 38%, rgba(243, 245, 251, 0.1) 68%, transparent 100%),
-    linear-gradient(0deg, var(--bg) 0%, transparent 22%);
+  background: transparent;
+  display: none !important;
 }
 
 .hero-stage {
@@ -427,9 +425,10 @@ html[data-theme="pearl"] .shade {
   gap: 10px;
   padding: 6px 14px;
   border-radius: 999px;
-  background: var(--surface);
+  background: rgba(14, 18, 34, 0.35);
   border: 1px solid var(--border-prism);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .pulse-dot {
@@ -581,9 +580,10 @@ em {
   gap: 10px;
   padding: 10px 12px;
   border-radius: 12px;
-  background: var(--surface);
+  background: rgba(14, 18, 34, 0.25);
   border: 1px solid var(--border);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   transition: border-color 0.2s, transform 0.2s, background 0.2s;
 }
 
@@ -1740,34 +1740,18 @@ h3,
   font-family: var(--display);
 }
 
-/* Protective deep-navy readability aura behind Hero text so orbit lines never clash */
+/* Hero copy - Transparent background allowing full 3D universe visibility */
 .hero-copy {
   position: relative;
-  padding: 24px 28px 24px 0;
-  border-radius: 28px;
+  background: transparent;
 }
 
 .hero-copy::before {
-  content: "";
-  position: absolute;
-  inset: -28px -40px -28px -32px;
-  background: radial-gradient(
-    ellipse at 36% 48%,
-    rgba(3, 15, 38, 0.88) 0%,
-    rgba(3, 15, 38, 0.58) 56%,
-    transparent 86%
-  );
-  pointer-events: none;
-  z-index: -1;
+  display: none !important;
 }
 
 html[data-theme="pearl"] .hero-copy::before {
-  background: radial-gradient(
-    ellipse at 36% 48%,
-    rgba(243, 245, 251, 0.9) 0%,
-    rgba(243, 245, 251, 0.6) 56%,
-    transparent 86%
-  );
+  display: none !important;
 }
 
 h1 {
@@ -1911,14 +1895,16 @@ html[data-theme="pearl"] .button {
 }
 
 .mini-orbit-chip {
-  background: rgba(4, 20, 48, 0.86);
-  border: 1px solid rgba(56, 189, 248, 0.28);
-  box-shadow: 0 4px 0 rgba(2, 11, 30, 0.85);
+  background: rgba(4, 20, 48, 0.35);
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 .mini-orbit-chip:hover {
   border-color: #ffbe0b;
-  background: rgba(7, 30, 68, 0.94);
+  background: rgba(7, 30, 68, 0.6);
 }
 
 .chip-idx {
@@ -1928,17 +1914,10 @@ html[data-theme="pearl"] .button {
 }
 
 
-/* Keep .shade focused on far-left so JUPITER, MARS & EARTH shine at full brightness */
-.hero > .shade {
-  background:
-    linear-gradient(90deg, rgba(3, 14, 34, 0.82) 0%, rgba(3, 14, 34, 0.35) 32%, rgba(3, 14, 34, 0.0) 52%),
-    linear-gradient(180deg, rgba(3, 14, 34, 0.35) 0%, transparent 18%, transparent 82%, rgba(3, 14, 34, 0.78) 100%) !important;
-}
-
-html[data-theme="pearl"] .hero > .shade {
-  background:
-    linear-gradient(90deg, rgba(243, 245, 251, 0.88) 0%, rgba(243, 245, 251, 0.45) 34%, rgba(243, 245, 251, 0.0) 54%),
-    linear-gradient(180deg, rgba(243, 245, 251, 0.35) 0%, transparent 20%, transparent 82%, rgba(243, 245, 251, 0.85) 100%) !important;
+/* Hero shade overlay completely transparent to keep 3D space fully clear */
+.hero > .shade,
+.shade {
+  display: none !important;
 }
 
 html[data-theme="pearl"] .status-pill {
