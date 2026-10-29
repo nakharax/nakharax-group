@@ -1262,14 +1262,32 @@ $$("[data-theme-set]").forEach((btn) => {
   });
 });
 
-// Language Mode Switcher (Bilingual / EN / TH)
+// Language Mode Switcher (EN default, TH)
+function setLanguage(mode) {
+  const activeMode = mode === "th" ? "th" : "en";
+  document.documentElement.dataset.langMode = activeMode;
+  document.documentElement.lang = activeMode;
+  $$("[data-lang-set]").forEach((b) => {
+    b.setAttribute("aria-pressed", String(b.dataset.langSet === activeMode));
+  });
+  try {
+    localStorage.setItem("nakharax_lang", activeMode);
+  } catch (e) {}
+}
+
+const savedLang = (() => {
+  try {
+    return localStorage.getItem("nakharax_lang");
+  } catch (e) {
+    return null;
+  }
+})() || "en";
+
+setLanguage(savedLang);
+
 $$("[data-lang-set]").forEach((btn) => {
   btn.addEventListener("click", () => {
-    const mode = btn.dataset.langSet;
-    document.documentElement.dataset.langMode = mode;
-    $$("[data-lang-set]").forEach((b) => {
-      b.setAttribute("aria-pressed", String(b === btn));
-    });
+    setLanguage(btn.dataset.langSet);
   });
 });
 

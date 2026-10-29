@@ -92,10 +92,11 @@ body {
   transition: background 0.35s ease, color 0.35s ease;
 }
 
-/* Language Toggle Modes */
-html[data-lang-mode="bilingual"] .th-only {
-  display: none;
-}
+/* ============================================================================
+   LANGUAGE MODES: EN (Default) & TH
+   ============================================================================ */
+
+/* EN MODE (DEFAULT) */
 html[data-lang-mode="en"] .th-only,
 html[data-lang-mode="en"] .th-inline,
 html[data-lang-mode="en"] .hero-th-sub,
@@ -106,14 +107,29 @@ html[data-lang-mode="en"] .connect-th,
 html[data-lang-mode="en"] .flow-node small {
   display: none !important;
 }
-html[data-lang-mode="th"] .en-txt {
+
+/* TH MODE */
+html[data-lang-mode="th"] .en-txt,
+html[data-lang-mode="th"] .intro,
+html[data-lang-mode="th"] #mission-description,
+html[data-lang-mode="th"] .intelligence-copy,
+html[data-lang-mode="th"] #stage-desc {
   display: none !important;
 }
-html[data-lang-mode="th"] .th-only {
-  display: inline;
+
+html[data-lang-mode="th"] span.th-only,
+html[data-lang-mode="th"] span.th-inline {
+  display: inline !important;
 }
-html[data-lang-mode="th"] .th-inline {
-  display: none !important;
+
+html[data-lang-mode="th"] p.th-only,
+html[data-lang-mode="th"] p.th-inline,
+html[data-lang-mode="th"] .hero-th-sub,
+html[data-lang-mode="th"] .mission-th,
+html[data-lang-mode="th"] .intelligence-th-lead,
+html[data-lang-mode="th"] .stage-th,
+html[data-lang-mode="th"] .connect-th {
+  display: block !important;
 }
 
 /* Universal Thai Typography Polish */
@@ -236,15 +252,15 @@ nav a {
 }
 
 nav a .nav-idx {
-  font: 9px var(--font-label);
+  font: 10px var(--font-label);
   color: var(--cyan);
-  opacity: 0.8;
+  opacity: 0.85;
 }
 
-nav a .th-inline {
-  font-size: 11px;
-  opacity: 0.75;
-  font-family: "Noto Sans Thai", sans-serif;
+nav a .th-only,
+nav a .en-txt {
+  font-size: 13px;
+  font-weight: 500;
 }
 
 nav a:hover {
