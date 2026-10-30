@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "npx serve -l 3333",
     "start": "npx serve -l 3333",
+    "build": "echo 'Static build ready'",
     "test": "node --test tests/*.test.mjs",
     "test:browser": "node tests/browser.mjs",
     "export:film": "node scripts/export-film.mjs"
