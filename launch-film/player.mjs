@@ -32,6 +32,7 @@ export function mountFilm(root) {
   const assets = { logo: new Image() };
   let time = 0, base = 0, anchor = 0, playing = false, muted = false, raf = 0, readyFlag = false;
   let audioContext, audioBuffer, source, soundToken = 0;
+  let playRequest = 0;
   let audioAvailable = Boolean(window.AudioContext || window.webkitAudioContext);
   let lastChapter = '', lastLang = '';
   const lang = () => document.documentElement.lang === 'th' ? 'th' : 'en';
@@ -107,12 +108,14 @@ export function mountFilm(root) {
     render(); raf = requestAnimationFrame(tick);
   }
   function play() {
-    if (playing || !readyFlag) return;
+    if (playing || !readyFlag || document.hidden || (dialog && !dialog.open)) return;
     if (time >= DURATION) time = 0;
     base = time; anchor = performance.now(); playing = true;
     stopSound(); void startSound(); render(); raf = requestAnimationFrame(tick);
   }
   function pause() {
+    // Cancel an opening still waiting for local assets, not only current playback.
+    playRequest++;
     time = current(); playing = false; cancelAnimationFrame(raf); stopSound(); render();
   }
   function seek(seconds) {
@@ -149,8 +152,9 @@ export function mountFilm(root) {
   if (dialog) {
     document.getElementById('film-open')?.addEventListener('click', () => {
       if (!dialog.open) dialog.showModal();
+      const request = ++playRequest;
       dialog.dispatchEvent(new CustomEvent('nx:film-open'));
-      void ready.then(() => { if (dialog.open && !reduced.matches) play(); });
+      void ready.then(() => { if (request === playRequest && dialog.open && !reduced.matches) play(); });
     });
     document.getElementById('film-close')?.addEventListener('click', () => { pause(); dialog.close(); });
     // Escape's native cancel path can remove open before a close event is delivered.

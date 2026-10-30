@@ -5,10 +5,47 @@ import { startServer } from '../scripts/static-server.mjs';
 const { chromium } = createRequire(import.meta.url)('@playwright/test');
 
 const server = await startServer();
-const browser = await chromium.launch({ headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage', '--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
+// Pin Canvas 2D to CPU: GPU readback promotion changes rasterization mid-test.
+const browser = await chromium.launch({ headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-accelerated-2d-canvas', '--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
 const results = [];
 await mkdir('.runtime/screenshots', { recursive: true });
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+// Delay only a real asset response: all player, rendering and audio code stays real.
+async function withPendingFilm(asset, run) {
+  const ctx = await browser.newContext({ reducedMotion: 'no-preference' });
+  const p = await ctx.newPage(), pageErrors = [];
+  p.on('pageerror', error => pageErrors.push(error.message));
+  await p.addInitScript(() => {
+    window.filmAudioStarts = 0;
+    const start = AudioBufferSourceNode.prototype.start;
+    AudioBufferSourceNode.prototype.start = function (...args) {
+      const result = start.apply(this, args); window.filmAudioStarts++; return result;
+    };
+  });
+  let release;
+  const gate = new Promise(resolve => { release = resolve; });
+  await p.route('https://**/*', route => route.abort());
+  await p.route(`**/assets/${asset}`, async route => { await gate; await route.continue(); });
+  try {
+    const requested = p.waitForRequest(req => req.url().endsWith(`/assets/${asset}`));
+    await p.goto(server.url, { waitUntil: 'domcontentloaded' });
+    await requested;
+    await p.locator('#film-open').click();
+    assert.equal(await p.evaluate(() => window.launchFilmPlayer.getState().ready), false);
+    const finish = async () => { release(); await p.evaluate(() => window.launchFilmPlayer.ready); };
+    await run(p, finish, ctx);
+    assert.deepEqual(pageErrors, []);
+  } finally { release(); await p.unrouteAll({ behavior: 'wait' }); await ctx.close(); }
+}
+async function assertStopped(p) {
+  const state = await p.evaluate(() => window.launchFilmPlayer.getState());
+  assert.equal(state.ready, true);
+  assert.equal(state.playing, false, 'readiness must not restart stopped playback');
+  assert.equal(state.time, 0);
+  assert.equal(await p.evaluate(() => window.filmAudioStarts), 0, 'no audio may start after cancellation');
+  await sleep(80);
+  assert.equal(await p.evaluate(() => window.launchFilmPlayer.getState().time), 0);
+}
 async function check(name, run) {
   try { await run(); results.push({ name, status: 'PASS' }); console.log(`PASS ${name}`); }
   catch (error) { results.push({ name, status: 'FAIL', error: error.stack }); console.error(`FAIL ${name}: ${error.stack}`); }
@@ -138,10 +175,94 @@ try {
     await p.goto(server.url + '/launch-film/');
     await p.waitForFunction(() => window.launchFilmPlayer?.getState().ready);
     const seek = async t => { await p.evaluate(t => window.launchFilmPlayer.seek(t), t); return p.locator('canvas').screenshot(); };
-    const first = await seek(9.45); await seek(22); assert.deepEqual(await seek(9.45), first);
+    const first = await seek(9.45); await seek(22);
+    assert.ok((await seek(9.45)).equals(first), 'seeking back must produce the identical canvas PNG');
     assert.deepEqual(external, []);
     assert.equal(await p.evaluate(() => document.fonts.check('700 30px "Space Grotesk"')), true);
     await p.close();
+  });
+  for (const asset of ['nakharax-icon.png', 'fonts/NotoSansThai-Regular.ttf']) {
+    for (const stop of ['pagehide', 'hidden', 'hidden-visible']) {
+      await check(`delayed ${asset}: ${stop} cancels autoplay (synthetic lifecycle)`, async () => {
+        await withPendingFilm(asset, async (p, finish) => {
+          await p.evaluate(stop => {
+            if (stop === 'pagehide') window.dispatchEvent(new PageTransitionEvent('pagehide'));
+            else {
+              Object.defineProperty(document, 'hidden', { configurable: true, value: true });
+              document.dispatchEvent(new Event('visibilitychange'));
+              if (stop === 'hidden-visible') {
+                delete document.hidden; document.dispatchEvent(new Event('visibilitychange'));
+              }
+            }
+          }, stop);
+          await finish(); await assertStopped(p);
+          await p.evaluate(() => {
+            delete document.hidden; document.dispatchEvent(new Event('visibilitychange'));
+            window.dispatchEvent(new PageTransitionEvent('pageshow', { persisted: true }));
+          });
+          await p.locator('[data-film-play]').click();
+          await p.waitForFunction(() => window.launchFilmPlayer.getState().time > 0);
+          assert.equal(await p.evaluate(() => window.launchFilmPlayer.getState().playing), true);
+        });
+      });
+    }
+  }
+  await check('explicit pause while assets load cancels deferred autoplay', async () => {
+    await withPendingFilm('nakharax-icon.png', async (p, finish) => {
+      await p.evaluate(() => window.launchFilmPlayer.pause());
+      await finish(); await assertStopped(p);
+    });
+  });
+  await check('reduced-motion stop is not undone if preference changes before ready', async () => {
+    await withPendingFilm('nakharax-icon.png', async (p, finish) => {
+      for (const reducedMotion of ['reduce', 'no-preference']) {
+        await p.evaluate(() => {
+          window.filmMotionChange = new Promise(resolve => matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', () => resolve(), { once: true }));
+        });
+        await p.emulateMedia({ reducedMotion });
+        await p.evaluate(() => window.filmMotionChange);
+      }
+      await finish(); await assertStopped(p);
+      await p.locator('[data-film-play]').click();
+      assert.equal(await p.evaluate(() => window.launchFilmPlayer.getState().playing), true);
+    });
+  });
+  await check('close and reopen while loading honors the latest opening', async () => {
+    await withPendingFilm('nakharax-icon.png', async (p, finish) => {
+      await p.locator('#film-close').click();
+      await p.locator('#film-open').click();
+      await finish();
+      await p.waitForFunction(() => window.launchFilmPlayer.getState().time > 0);
+      assert.equal(await p.evaluate(() => window.launchFilmPlayer.getState().playing), true);
+      assert.ok(await p.evaluate(() => window.filmAudioStarts <= 1));
+    });
+  });
+  await check('public play cannot start inside a closed dialog', async () => {
+    const ctx = await browser.newContext(), p = await ctx.newPage();
+    try {
+      await p.route('https://**/*', route => route.abort());
+      await p.goto(server.url);
+      await p.evaluate(() => window.launchFilmPlayer.ready);
+      await p.evaluate(() => window.launchFilmPlayer.play());
+      assert.equal(await p.evaluate(() => window.launchFilmPlayer.getState().playing), false);
+      await p.locator('#film-open').click();
+      assert.equal(await p.evaluate(() => window.launchFilmPlayer.getState().playing), true);
+    } finally { await ctx.close(); }
+  });
+  await check('hidden standalone rejects play but visible explicit Play still works', async () => {
+    const ctx = await browser.newContext(), p = await ctx.newPage();
+    try {
+      await p.goto(server.url + '/launch-film/');
+      await p.evaluate(() => window.launchFilmPlayer.ready);
+      await p.evaluate(() => {
+        Object.defineProperty(document, 'hidden', { configurable: true, value: true });
+        window.launchFilmPlayer.play();
+      });
+      assert.equal(await p.evaluate(() => window.launchFilmPlayer.getState().playing), false);
+      await p.evaluate(() => { delete document.hidden; });
+      await p.locator('[data-film-play]').click();
+      assert.equal(await p.evaluate(() => window.launchFilmPlayer.getState().playing), true);
+    } finally { await ctx.close(); }
   });
 } catch (error) { if (!results.some(r => r.status === 'FAIL')) results.push({ name: 'harness', status: 'FAIL', error: error.message }); }
 finally {
