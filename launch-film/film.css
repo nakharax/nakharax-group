@@ -1,0 +1,41 @@
+/* Film styles are deliberately scoped: the surrounding site keeps its layout. */
+@font-face{font-family:"Space Grotesk";font-style:normal;font-weight:400;src:url("../assets/fonts/SpaceGrotesk-Regular.ttf") format("truetype");font-display:swap}
+@font-face{font-family:"Space Grotesk";font-style:normal;font-weight:700;src:url("../assets/fonts/SpaceGrotesk-Bold.ttf") format("truetype");font-display:swap}
+@font-face{font-family:"Noto Sans Thai";font-style:normal;font-weight:400;src:url("../assets/fonts/NotoSansThai-Regular.ttf") format("truetype");font-display:swap}
+.nx-film{--film-ink:#f4f0e8;--film-muted:#bcc4d6;--film-gold:#e5c896;background:#041128;color:var(--film-ink);font-family:"Space Grotesk","Noto Sans Thai",sans-serif;width:100%;min-width:0;text-align:left}
+.nx-film-screen{overflow:hidden;aspect-ratio:16/9;background:#041128}
+.nx-film canvas{display:block;width:100%;height:100%;touch-action:pan-y;outline-offset:-4px}
+.nx-film-caption{margin:0;padding:14px 20px 6px;min-height:3.3em;line-height:1.6;font-size:14px;color:var(--film-muted)}
+.nx-film-controls{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding:8px 20px 0}
+.nx-film button,.nx-film summary{font:500 13px/1.4 "Space Grotesk","Noto Sans Thai",sans-serif;letter-spacing:0;text-transform:none;cursor:pointer}
+.nx-film button{min-height:44px;min-width:44px;border:1px solid #60708d;background:transparent;color:var(--film-ink);border-radius:4px;padding:10px 14px}
+.nx-film button:hover,.nx-film button[aria-current="true"]{border-color:var(--film-gold);background:#17253d}
+.nx-film button[data-film-play]{background:var(--film-gold);border-color:var(--film-gold);color:#041128;min-width:90px}
+.nx-film :is(button,input,canvas,summary):focus-visible{outline:2px solid var(--film-gold);outline-offset:3px}
+.nx-film output{font-size:12px;white-space:nowrap;margin-left:auto;color:var(--film-muted);font-variant-numeric:tabular-nums}
+.nx-film input[type="range"]{display:block;flex:1 0 100%;width:100%;height:44px;margin:0;accent-color:var(--film-gold);cursor:pointer}
+.nx-film-status{font-size:12px;line-height:1.6;margin:0;padding:0 20px;color:var(--film-gold)}
+.nx-film-status:empty{display:none}
+.nx-film-chapters{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:8px 20px 16px}
+.nx-film-chapters button{font-size:11px;text-align:left;overflow-wrap:anywhere;padding:9px 10px}
+.nx-film-transcript{border-top:1px solid #34425c;padding:0 20px 10px}
+.nx-film-transcript summary{min-height:44px;padding:14px 0;color:var(--film-muted)}
+.nx-film-transcript ol{padding:0 0 0 20px;margin:0 0 12px;font-size:13px;line-height:1.8;color:var(--film-muted)}
+.nx-film-transcript li{padding:5px 0}
+#film:has(.nx-film){width:min(1040px,calc(100vw - 32px));max-height:calc(100dvh - 32px);overflow:auto;padding:0;background:#041128;color:#f4f0e8;border:1px solid #53607b;border-radius:10px}
+#film:has(.nx-film) .dialog-head{padding:10px 20px;gap:12px;border-bottom:1px solid #34425c}
+#film:has(.nx-film) .dialog-head p{font-size:10px;line-height:1.5;letter-spacing:1.3px;color:#bcc4d6;margin:0}
+#film-close{min-width:44px;min-height:44px;flex:0 0 auto}
+@media(max-width:600px){
+  .nx-film-caption{font-size:13px;padding:12px 12px 4px;min-height:4.5em}
+  .nx-film-controls{padding:6px 12px 0;gap:6px}
+  .nx-film-controls button{padding:8px 10px;font-size:12px}
+  .nx-film button[data-film-play]{min-width:70px}
+  .nx-film output{font-size:10px}
+  .nx-film-chapters{grid-template-columns:repeat(2,minmax(0,1fr));padding:4px 12px 12px}
+  .nx-film-transcript{padding:0 12px 6px}
+  .nx-film-status{padding:0 12px}
+  #film:has(.nx-film){width:calc(100vw - 20px);max-height:calc(100dvh - 20px)}
+  #film:has(.nx-film) .dialog-head{padding:8px 12px}
+}
+@media(prefers-reduced-motion:reduce){.nx-film *{scroll-behavior:auto;transition:none!important}}
