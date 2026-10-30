@@ -5,7 +5,8 @@ import { startServer } from '../scripts/static-server.mjs';
 const { chromium } = createRequire(import.meta.url)('@playwright/test');
 
 const server = await startServer();
-const browser = await chromium.launch({ headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage', '--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
+// Pin Canvas 2D to CPU: GPU readback promotion changes rasterization mid-test.
+const browser = await chromium.launch({ headless: true, args: ['--no-sandbox', '--disable-dev-shm-usage', '--disable-accelerated-2d-canvas', '--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'] });
 const results = [];
 await mkdir('.runtime/screenshots', { recursive: true });
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
@@ -174,7 +175,8 @@ try {
     await p.goto(server.url + '/launch-film/');
     await p.waitForFunction(() => window.launchFilmPlayer?.getState().ready);
     const seek = async t => { await p.evaluate(t => window.launchFilmPlayer.seek(t), t); return p.locator('canvas').screenshot(); };
-    const first = await seek(9.45); await seek(22); assert.deepEqual(await seek(9.45), first);
+    const first = await seek(9.45); await seek(22);
+    assert.ok((await seek(9.45)).equals(first), 'seeking back must produce the identical canvas PNG');
     assert.deepEqual(external, []);
     assert.equal(await p.evaluate(() => document.fonts.check('700 30px "Space Grotesk"')), true);
     await p.close();
