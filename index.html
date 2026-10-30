@@ -18,6 +18,7 @@
     />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="brand.css" />
+    <link rel="stylesheet" href="launch-film/film.css" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
@@ -641,141 +642,15 @@
       <a href="#home">BACK TO TOP ↑</a>
     </footer>
 
-    <dialog id="film" aria-label="NakharaX Solar System motion study">
+    <dialog id="film" aria-label="NakharaX Group brand film">
       <div class="dialog-head">
-        <p class="eyebrow">NAKHARAX GROUP / SOLAR SYSTEM VISION FILM</p>
+        <p class="eyebrow">NAKHARAX GROUP / A SHARED ORBIT — BRAND FILM</p>
         <button type="button" id="film-close" aria-label="Close film">✕</button>
       </div>
-      <div class="film-stage-wrap">
-        <video
-          id="vision-video"
-          controls
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          poster="assets/mothership-poster.jpg"
-        >
-          <source id="src-mp4" src="assets/mothership-motion.mp4" type="video/mp4" />
-          <source id="src-webm" src="assets/mothership-motion.webm" type="video/webm" />
-        </video>
-      </div>
-      <div class="film-chapters" role="group" aria-label="Film chapters">
-        <button type="button" class="film-chap-btn active" data-chap-time="0" data-chap-view="orbit">
-          <span>01</span> THE CENTRAL SUN
-        </button>
-        <button type="button" class="film-chap-btn" data-chap-time="1.0" data-chap-view="profile">
-          <span>02</span> EARTH · XPFIRM
-        </button>
-        <button type="button" class="film-chap-btn" data-chap-time="2.0" data-chap-view="core">
-          <span>03</span> JUPITER · PROTOCOL
-        </button>
-        <button type="button" class="film-chap-btn" data-chap-time="3.0" data-chap-view="zenith">
-          <span>04</span> SATURN · HERMES AI
-        </button>
-      </div>
-      <p class="fine">
-        Motion study rendered from the interactive 3D Solar System V4 scene · Click any chapter above to jump.
-      </p>
+      <div data-launch-film></div>
     </dialog>
 
-    <script>
-      // Resilient standalone film modal & chapter controller (works even if module CDN is offline)
-      (function () {
-        const openBtn = document.getElementById("film-open");
-        const closeBtn = document.getElementById("film-close");
-        const dlg = document.getElementById("film");
-        const vid = document.getElementById("vision-video");
-        let blobReady = false;
-
-        function dataUriToBlobUrl(dataUri) {
-          try {
-            const parts = dataUri.split(",");
-            const mime = parts[0].match(/:(.*?);/)[1];
-            const bstr = atob(parts[1]);
-            let n = bstr.length;
-            const u8 = new Uint8Array(n);
-            while (n--) u8[n] = bstr.charCodeAt(n);
-            return URL.createObjectURL(new Blob([u8], { type: mime }));
-          } catch (e) {
-            return null;
-          }
-        }
-
-        function ensureVideoPlayable() {
-          if (!vid || blobReady) return;
-          blobReady = true;
-          const sMp4 = document.getElementById("src-mp4");
-          const sWebm = document.getElementById("src-webm");
-          const canMp4 = vid.canPlayType && vid.canPlayType('video/mp4; codecs="avc1.42E01E"') !== "";
-          const chosen = (canMp4 && sMp4) ? sMp4 : (sWebm || sMp4);
-          if (chosen) {
-            const rawSrc = chosen.getAttribute("src") || "";
-            if (rawSrc.startsWith("data:")) {
-              const bUrl = dataUriToBlobUrl(rawSrc);
-              if (bUrl) {
-                vid.src = bUrl;
-              } else {
-                vid.src = rawSrc;
-              }
-            }
-          }
-          vid.muted = true;
-          vid.load();
-        }
-
-        if (openBtn && dlg) {
-          openBtn.addEventListener("click", function () {
-            if (!dlg.open) {
-              dlg.showModal();
-            }
-            ensureVideoPlayable();
-            if (vid) {
-              vid.muted = true;
-              const p = vid.play();
-              if (p && typeof p.catch === "function") {
-                p.catch(function () {});
-              }
-            }
-          });
-        }
-
-        if (closeBtn && dlg) {
-          closeBtn.addEventListener("click", function () {
-            if (dlg.open) dlg.close();
-          });
-        }
-
-        if (dlg && vid) {
-          dlg.addEventListener("close", function () {
-            vid.pause();
-          });
-        }
-
-        document.querySelectorAll(".film-chap-btn").forEach(function (btn) {
-          btn.addEventListener("click", function () {
-            document.querySelectorAll(".film-chap-btn").forEach(function (b) {
-              b.classList.toggle("active", b === btn);
-            });
-            const t = parseFloat(btn.getAttribute("data-chap-time") || "0");
-            if (vid) {
-              ensureVideoPlayable();
-              try {
-                vid.currentTime = t;
-              } catch (e) {}
-              const p = vid.play();
-              if (p && typeof p.catch === "function") p.catch(function () {});
-            }
-            const viewKey = btn.getAttribute("data-chap-view");
-            if (viewKey) {
-              const vBtn = document.querySelector('[data-view="' + viewKey + '"]');
-              if (vBtn) vBtn.click();
-            }
-          });
-        });
-      })();
-    </script>
-
     <script type="module" src="app.js"></script>
+    <script type="module" src="launch-film/player.mjs"></script>
   </body>
 </html>

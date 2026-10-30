@@ -1484,36 +1484,19 @@ $$("[data-stage]").forEach((btn) => {
   });
 });
 
-// Film Modal Controls
-const dialog = $("#film"),
-  video = $("#vision-video");
+// Pause the existing 3D scene while the independent launch-film player is open.
+const dialog = $("#film");
 let beforeFilm = paused;
 
-$("#film-open").addEventListener("click", () => {
+dialog.addEventListener("nx:film-open", () => {
   beforeFilm = paused;
   paused = true;
   motionState();
-  dialog.showModal();
 });
 
-function closeFilm() {
-  video.pause();
+function restoreSceneAfterFilm() {
   paused = beforeFilm;
   motionState();
 }
-
-$("#film-close").addEventListener("click", () => dialog.close());
-dialog.addEventListener("close", closeFilm);
-dialog.addEventListener("click", (e) => {
-  if (e.target === dialog) {
-    const r = dialog.getBoundingClientRect();
-    if (
-      e.clientX < r.left ||
-      e.clientX > r.right ||
-      e.clientY < r.top ||
-      e.clientY > r.bottom
-    ) {
-      dialog.close();
-    }
-  }
-});
+dialog.addEventListener("cancel", restoreSceneAfterFilm);
+dialog.addEventListener("close", restoreSceneAfterFilm);
