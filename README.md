@@ -4,9 +4,10 @@
 
 Official interactive static website for **NakharaX Group**.
 
-## 🌐 Live Deployments
+## 🌐 Live Production
+- **Official Domain:** [https://nakharax.com](https://nakharax.com)
 - **GitHub Pages:** [https://nakharax.github.io/nakharax-group/](https://nakharax.github.io/nakharax-group/)
-- **Vercel:** Ready for 1-click deployment with zero configuration.
+- **Vercel Deployment:** Hosted on Vercel Global Edge Network with zero-config static optimization.
 
 ## 🚀 Deploy to Vercel
 1. Go to [Vercel Dashboard (New Project)](https://vercel.com/new).
@@ -27,14 +28,6 @@ Configuration file [`vercel.json`](./vercel.json) is pre-configured with:
 ## 🎬 Brand Film
 
 The existing **Watch the vision** dialog now opens **A Shared Orbit**, an original 24-second kinetic brand film. Its live Canvas/Web Audio player reuses the original artwork and licensed local fonts, offers EN/TH captions, chapters, seeking, a transcript and reduced-motion handling. The rest of the website and Three.js scene keep their existing layout.
-
-- Standalone local preview: [`launch-film/`](./launch-film/)
-- Unit checks: `npm test`
-- Real browser checks: `npm run test:browser`
-- Export MP4/WebM: `npm run export:film -- --output .runtime/output`
-- Source, prerequisites, accessibility and export details: [`launch-film/README.md`](./launch-film/README.md)
-
-This change supplies film source and local verification, not a new public launch or deployment. No paid generation service or runtime dependency is introduced.
 
 ## 📄 License
 All proprietary brand assets belong to NakharaX Group. Three.js is licensed under the MIT License (see `vendor/THREE-LICENSE.txt`).
