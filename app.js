@@ -1346,9 +1346,9 @@ const missions = {
     focus: "Human-Led AI Ops",
     model: "Internal Operations",
     gov: "No Trading Authority",
-    link: "#intelligence",
-    label: "Our approach to intelligence ↓",
-    note: "Conceptual architecture · no live telemetry",
+    link: "https://knowledge.nakharax.com/",
+    label: "Explore knowledge & team artifacts ↗",
+    note: "Public knowledge snapshot · not live telemetry · no internal access",
   },
 };
 
