@@ -35,6 +35,12 @@
 }
 
 :root {
+  /* Dual-Register Group aliases (FE redesign 2026-11-02) */
+  --nx-midnight: #08070d;
+  --nx-violet: #9e66ff;
+  --nx-gold: #dfc69b;
+  --border-xpf: #1B2333;
+
   --bg: #041128;
   --bg-alt: #061836;
   --surface: rgba(14, 18, 34, 0.72);
@@ -83,6 +89,7 @@ html {
 }
 
 body {
+  font-variant-numeric: tabular-nums;
   margin: 0;
   background: var(--bg);
   color: var(--ink);
@@ -433,7 +440,7 @@ html[data-theme="pearl"] .shade {
   height: 7px;
   border-radius: 50%;
   background: var(--cyan);
-  box-shadow: 0 0 12px var(--cyan);
+  box-shadow: 0 0 0 1px var(--cyan);
 }
 
 .eyebrow,
@@ -1061,7 +1068,7 @@ h2 span span {
 .node:hover,
 .node.active {
   border-color: var(--cyan);
-  box-shadow: 0 0 32px rgba(56, 189, 248, 0.28);
+  box-shadow: 0 8px 24px rgba(2, 11, 30, 0.35);
   transform: translateY(-2px);
 }
 
@@ -1344,7 +1351,7 @@ h2 span span {
 .flow-node:hover,
 .flow-node.active {
   border-color: var(--cyan);
-  box-shadow: 0 0 28px rgba(56, 189, 248, 0.2);
+  box-shadow: 0 8px 24px rgba(2, 11, 30, 0.35);
   transform: translateY(-2px);
 }
 
@@ -1852,7 +1859,7 @@ html[data-theme="pearl"] .intro {
 
 .pulse-dot {
   background: #ffbe0b;
-  box-shadow: 0 0 12px #ffbe0b;
+  box-shadow: none;
 }
 
 /* Primary CTA Button matched to Solar System Gold-Orange & Deep Navy 3D Shadow */
