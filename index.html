@@ -4,72 +4,28 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="theme-color" content="#05060b" />
-    <meta
-      name="description"
-      content="NakharaX Group — Engineering intelligence. Building with purpose. Explore our connected solar system of technology and human ambition."
-    />
+    <meta name="description" content="NakharaX Group — Engineering intelligence. Building with purpose. Explore our connected solar system of technology and human ambition." />
     <title>NakharaX Group — Solar System &amp; Ecosystem</title>
     <link rel="icon" type="image/png" href="assets/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="brand.css" />
     <link rel="stylesheet" href="launch-film/film.css" />
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
-    <header id="site-header">
-      <div class="header-pill">
-        <a class="brand" href="#home" aria-label="NakharaX Group home">NAKHARA<span class="gold">X</span> GROUP</a>
-        <nav id="primary-nav" aria-label="Main navigation">
-          <a href="#vision">01 Our vision</a>
-          <a href="#ecosystem">02 Ecosystem</a>
-          <a href="#intelligence">03 Intelligence</a>
-          <a href="#connect">04 Connect</a>
-        </nav>
-        <a class="nav-cta" href="#connect">Connect</a>
-      </div>
-    </header>
+    <header id="site-header"><div class="header-pill"><a class="brand" href="#home" aria-label="NakharaX Group home"><span class="brand-wordmark">NAKHARA<span class="gold">X</span><small>GROUP</small></span></a><nav id="primary-nav" aria-label="Main navigation"><a href="#vision" data-nav="vision">01 Our vision</a><a href="#ecosystem" data-nav="ecosystem">02 Ecosystem</a><a href="#intelligence" data-nav="intelligence">03 Intelligence</a><a href="#connect" data-nav="connect">04 Connect</a></nav><a class="nav-cta" href="#connect">Connect</a><button type="button" id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu"><span></span><span></span></button></div></header>
     <main id="main">
-      <section id="home" class="hero">
-        <div id="universe" role="region" tabindex="0" data-view="orbit" aria-label="Interactive NakharaX 3D Solar System"></div>
-        <h1>Beyond ideas. Into impact.</h1>
-        <p>A connected world of human ambition, engineering, and artificial intelligence.</p>
-        <a class="button" href="#ecosystem">Explore our universe</a>
-      </section>
-      <section id="vision" class="vision section">
-        <h2>Not a collection of companies. A constellation of possibilities.</h2>
-      </section>
-      <section id="ecosystem" class="ecosystem section">
-        <h2>Different missions. One gravitational core.</h2>
-        <article id="mission-card">
-          <h3 id="mission-title">XpFirm</h3>
-          <p id="mission-description">A Trader Risk and Discipline Workspace. Designed around preparation, risk awareness, and consistent decision-making — not the promise of returns.</p>
-          <a id="mission-link" class="dossier-cta" data-product-door="https://xpfirm.com" href="https://xpfirm.com" target="_blank" rel="noopener noreferrer">Open XpFirm</a>
-          <small id="mission-note">Live product door</small>
-        </article>
-      </section>
-      <section id="intelligence" class="intelligence section">
-        <h2>Intelligence is powerful. Direction makes it matter.</h2>
-        <span class="fine">CONCEPTUAL ARCHITECTURE — NOT LIVE TELEMETRY</span>
-      </section>
-      <section id="connect" class="connect section">
-        <h2>The future isn't somewhere we go. It's something we build.</h2>
-        <p class="connect-th" lang="th">ประตูผลิตภัณฑ์คือ XpFirm งานวิศวกรรมอื่นยังดูได้บน GitHub</p>
-        <a class="button" href="https://github.com/nakharax" target="_blank" rel="noopener noreferrer">Connect with NakharaX</a>
-        <a class="secondary-button" data-product-door="https://xpfirm.com" href="https://xpfirm.com" target="_blank" rel="noopener noreferrer">Open XpFirm</a>
-        <p class="fine">XpFirm has its own door. Other engineering work stays on GitHub.</p>
-      </section>
+      <section id="home" class="hero"><div id="universe" role="region" tabindex="0" data-view="orbit" aria-label="Interactive NakharaX 3D Solar System" aria-describedby="scene-help"></div><div class="hero-stage"><h1>Beyond ideas. Into impact.</h1><p class="intro">A connected world of human ambition, engineering, and artificial intelligence.</p><a class="button" href="#ecosystem">Explore our universe</a><button type="button" id="film-open">Watch the vision</button></div><div class="hero-hud"><span id="scene-state">INITIALIZING 3D</span><button type="button" id="motion" aria-pressed="false">Pause motion</button><button type="button" id="reset">Reset view</button><p id="scene-help">Drag to orbit.</p></div></section>
+      <section id="vision" class="vision section"><h2>Not a collection of companies. A constellation of possibilities.</h2></section>
+      <section id="ecosystem" class="ecosystem section"><h2>Different missions. One gravitational core.</h2><button type="button" data-mission="xpfirm">XpFirm</button><button type="button" data-mission="protocol">NakharaX Protocol</button><button type="button" data-mission="hermes">AI Workforce</button><button type="button" id="mission-prev">Previous</button><span id="mission-counter">01 / 03</span><button type="button" id="mission-next">Next</button><article id="mission-card"><p id="mission-tag">01 / TRADER WORKSPACE</p><span id="mission-orbit-badge">ORBIT 01</span><h3 id="mission-title">XpFirm</h3><p id="mission-description">A Trader Risk and Discipline Workspace.</p><p id="mission-th" lang="th">พื้นที่ทำงานเพื่อวินัยและความเสี่ยง</p><p id="mission-detail">Free Core Forever is the product direction.</p><strong id="mission-meta-focus">Risk</strong><strong id="mission-meta-model">Free Core Forever</strong><strong id="mission-meta-gov">Transparent Scope</strong><a id="mission-link" class="dossier-cta" data-product-door="https://xpfirm.com" href="https://xpfirm.com" target="_blank" rel="noopener noreferrer">Open XpFirm</a><small id="mission-note">Live product door</small></article></section>
+      <section id="intelligence" class="intelligence section"><h2>Intelligence is powerful. Direction makes it matter.</h2><button type="button" class="flow-node active" data-stage="intent" aria-selected="true">HUMAN INTENT</button><button type="button" class="flow-node" data-stage="orchestration">HERMES</button><button type="button" class="flow-node" data-stage="workforce">WORKFORCE</button><button type="button" class="flow-node" data-stage="verified">VERIFIED WORK</button><div id="flow-detail-card"><span id="stage-code">STAGE 01</span><span id="stage-boundary">HUMAN</span><h3 id="stage-title">Human Intent</h3><p id="stage-desc">People set the boundary.</p><p id="stage-th" lang="th">มนุษย์กำหนดขอบเขต</p><strong id="stage-human-role">Defines scope</strong><strong id="stage-ai-role">Executes scoped work</strong><strong id="stage-gate">Human sign-off</strong></div><span class="fine">CONCEPTUAL ARCHITECTURE — NOT LIVE TELEMETRY</span></section>
+      <section id="connect" class="connect section"><h2>The future isn't somewhere we go. It's something we build.</h2><p class="connect-th" lang="th">ประตูผลิตภัณฑ์คือ XpFirm งานวิศวกรรมอื่นยังดูได้บน GitHub</p><a class="button" href="https://github.com/nakharax" target="_blank" rel="noopener noreferrer">Connect with NakharaX</a><a class="secondary-button" data-product-door="https://xpfirm.com" href="https://xpfirm.com" target="_blank" rel="noopener noreferrer">Open XpFirm</a><p class="fine">XpFirm has its own door. Other engineering work stays on GitHub.</p></section>
     </main>
-    <footer>
-      <a href="#home">NAKHARAX GROUP</a>
-      <span>SOLAR SYSTEM EDITION / V4</span>
-    </footer>
-    <dialog id="film"><div data-launch-film></div></dialog>
+    <footer><a class="footer-brand" href="#home">NAKHARAX GROUP</a><span>SOLAR SYSTEM EDITION / V4</span><a href="#home">BACK TO TOP</a></footer>
+    <dialog id="film" aria-label="NakharaX Group brand film"><button type="button" id="film-close" aria-label="Close film">Close</button><div data-launch-film></div></dialog>
     <script type="module" src="app.js"></script>
     <script type="module" src="launch-film/player.mjs"></script>
   </body>
