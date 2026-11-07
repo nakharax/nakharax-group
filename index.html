@@ -4,214 +4,174 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#f6f6f8" />
-    <title>NakharaX Group</title>
-    <meta
-      name="description"
-      content="NakharaX Group has two public doors: this company page, and XpFirm at xpfirm.com."
-    />
+    <title>NakharaX Group — Solar System &amp; Ecosystem</title>
+    <meta name="description" content="NakharaX Group — Engineering intelligence. Building with purpose. A connected world of human ambition, engineering, and artificial intelligence." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+Thai:wght@300;400;500;600&display=swap" rel="stylesheet" />
     <style>
-      :root {
-        --navy: #111a4a;
-        --ink: #3b3e47;
-        --steel: #7c7f88;
-        --line: #e3e4e8;
-        --canvas: #f6f6f8;
-        --white: #ffffff;
-        --orange: #ec652b;
-        --sea: #167e6c;
-        --max: 1120px;
-      }
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body {
-        margin: 0;
-        background: var(--canvas);
-        color: var(--ink);
-        font-family: Inter, "Noto Sans Thai", sans-serif;
-        font-size: 16px;
-        line-height: 1.5;
-      }
-      a { color: inherit; }
-      a:focus-visible, button:focus-visible {
-        outline: 2px solid var(--navy);
-        outline-offset: 3px;
-      }
-      .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
-      header {
-        position: sticky;
-        top: 0;
-        z-index: 2;
-        background: rgba(246, 246, 248, 0.92);
-        border-bottom: 1px solid var(--line);
-      }
-      .bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 64px;
-        gap: 16px;
-      }
-      .mark {
-        color: var(--navy);
-        font-weight: 600;
-        letter-spacing: -0.02em;
-        text-decoration: none;
-      }
-      nav { display: flex; gap: 8px; align-items: center; }
-      .btn, .ghost {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 44px;
-        padding: 10px 18px;
-        border-radius: 8px;
-        font-size: 14px;
-        font-weight: 500;
-        text-decoration: none;
-      }
-      .btn {
-        background: var(--navy);
-        color: var(--white);
-        box-shadow: rgba(17, 26, 74, 0.1) 0 1px 3px;
-      }
-      .ghost {
-        background: transparent;
-        color: var(--navy);
-        border: 1px solid var(--navy);
-      }
-      main { padding: 72px 0 96px; }
-      .hero {
-        display: grid;
-        grid-template-columns: 1.1fr 0.9fr;
-        gap: 48px;
-        align-items: end;
-      }
-      h1 {
-        margin: 0 0 16px;
-        color: var(--navy);
-        font-size: clamp(40px, 6vw, 60px);
-        line-height: 1;
-        letter-spacing: -0.03em;
-        font-weight: 600;
-        max-width: 12ch;
-      }
-      .lead { margin: 0; max-width: 38ch; font-size: 18px; line-height: 1.4; }
-      .thai { margin: 12px 0 0; color: var(--steel); }
-      .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-      .ledger {
-        background: var(--white);
-        border-radius: 8px;
-        box-shadow:
-          rgba(0, 0, 0, 0.02) 0 40px 32px,
-          rgba(0, 0, 0, 0.04) 0 7px 5px,
-          rgba(0, 0, 0, 0.07) 0 3px 2px;
-        overflow: hidden;
-      }
-      .ledger a { display: block; text-decoration: none; color: inherit; }
-      .signal {
-        background: var(--orange);
-        color: var(--white);
-        padding: 24px;
-      }
-      .signal small, .plain small {
-        display: block;
-        font-size: 12px;
-        font-weight: 500;
-        margin-bottom: 8px;
-      }
-      .signal strong, .plain strong {
-        display: block;
-        font-size: 28px;
-        line-height: 1.1;
-        letter-spacing: -0.02em;
-        font-weight: 600;
-      }
-      .signal p, .plain p { margin: 10px 0 0; font-size: 14px; }
-      .plain { padding: 24px; border-top: 1px solid var(--line); }
-      .plain strong { color: var(--navy); font-size: 22px; }
-      .doors { margin-top: 72px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
-      article {
-        background: var(--white);
-        border-radius: 8px;
-        padding: 24px;
-        box-shadow: rgba(18, 22, 30, 0.05) 0 1px 0, rgba(18, 22, 30, 0.04) 0 0 0 1px;
-      }
-      h2 { margin: 0 0 8px; color: var(--navy); font-size: 28px; letter-spacing: -0.02em; line-height: 1.1; }
-      article p { margin: 0; }
-      .note { margin-top: 72px; color: var(--steel); font-size: 14px; max-width: 62ch; }
-      footer {
-        border-top: 1px solid var(--line);
-        padding: 24px 0 40px;
-        color: var(--steel);
-        font-size: 14px;
-      }
-      @media (max-width: 800px) {
-        .hero, .doors { grid-template-columns: 1fr; }
-        main { padding-top: 40px; }
-        h1 { max-width: none; }
+      :root { --navy:#111a4a; --ink:#3b3e47; --steel:#7c7f88; --line:#e3e4e8; --canvas:#f6f6f8; --orange:#ec652b; --sea:#167e6c; --max:1200px; }
+      * { box-sizing:border-box; }
+      body { margin:0; background:var(--canvas); color:var(--ink); font-family:Inter,"Noto Sans Thai",sans-serif; font-size:16px; line-height:1.5; }
+      a { color:inherit; } a:focus-visible { outline:2px solid var(--navy); outline-offset:3px; }
+      .wrap { width:min(var(--max), calc(100% - 64px)); margin:0 auto; }
+      header { position:sticky; top:0; z-index:2; height:62px; display:flex; align-items:center; background:rgba(246,246,248,.92); border-bottom:1px solid var(--line); }
+      .bar { width:min(var(--max), calc(100% - 64px)); margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+      .mark { color:var(--navy); font-weight:600; letter-spacing:-.02em; text-decoration:none; }
+      .nav { display:flex; gap:18px; align-items:center; }
+      .nav a { color:var(--navy); font-size:14px; text-decoration:none; }
+      .btn, .ghost { display:inline-flex; align-items:center; min-height:44px; border-radius:8px; font-size:14px; font-weight:500; text-decoration:none; }
+      .btn { background:var(--navy); color:#fff; padding:12px 20px; box-shadow:rgba(17,26,74,.1) 0 1px 3px, rgba(255,255,255,.5) 0 1px 0 inset; }
+      .ghost { color:var(--navy); border:1px solid var(--navy); padding:12px 20px; }
+      .hero { padding:72px 0 24px; display:grid; grid-template-columns:1.15fr .85fr; gap:48px; align-items:end; }
+      .kicker { margin:0 0 16px; color:var(--navy); font-size:12px; font-weight:500; }
+      h1 { margin:0; color:var(--navy); font-size:52px; line-height:1.1; letter-spacing:-.03em; font-weight:600; max-width:14ch; }
+      .th { margin:12px 0 0; color:var(--steel); }
+      .intro { margin:18px 0 0; max-width:42ch; font-size:18px; line-height:1.33; }
+      .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+      .ledger { background:#fff; border-radius:8px; overflow:hidden; box-shadow:rgba(0,0,0,.02) 0 40px 32px, rgba(0,0,0,.03) 0 12px 10px, rgba(0,0,0,.07) 0 3px 2px; }
+      .ledger a { display:block; text-decoration:none; color:inherit; }
+      .signal { background:var(--orange); color:#fff; padding:24px; }
+      .plain { padding:24px; }
+      .signal small, .plain small { display:block; font-size:12px; font-weight:500; margin-bottom:8px; }
+      .signal strong, .plain strong { display:block; font-size:28px; line-height:1.1; letter-spacing:-.02em; font-weight:600; }
+      .plain strong { color:var(--navy); font-size:22px; }
+      .signal p, .plain p { margin:10px 0 0; font-size:14px; }
+      section { padding:72px 0; }
+      .paper { background:#fff; }
+      h2 { margin:0 0 12px; color:var(--navy); font-size:40px; line-height:1.1; letter-spacing:-.02em; font-weight:600; max-width:16ch; }
+      .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:32px; }
+      .grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:24px; }
+      .card { background:#fff; border-radius:8px; padding:24px; box-shadow:rgba(18,22,30,.024) 0 1px 4px, rgba(18,22,30,.024) 0 0 0 1px; }
+      .card h3 { margin:8px 0; color:var(--navy); font-size:28px; letter-spacing:-.02em; }
+      .card p { margin:8px 0 0; }
+      .meta { margin-top:16px; color:var(--sea); font-size:14px; font-weight:500; }
+      .flow { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:28px; }
+      .flow div { background:var(--canvas); border-radius:8px; padding:16px; }
+      .flow strong { display:block; color:var(--navy); font-size:14px; margin-bottom:8px; }
+      .fine { color:var(--steel); font-size:14px; }
+      footer { border-top:1px solid var(--line); padding:24px 0 40px; color:var(--steel); font-size:14px; }
+      @media (max-width:860px) {
+        .wrap, .bar { width:min(var(--max), calc(100% - 32px)); }
+        .hero, .grid2, .grid3, .flow { grid-template-columns:1fr; }
+        h1 { font-size:40px; max-width:none; }
+        .nav a:not(.btn) { display:none; }
       }
     </style>
   </head>
   <body>
     <header>
-      <div class="wrap bar">
-        <a class="mark" href="#top">NakharaX Group</a>
-        <nav aria-label="Public doors">
-          <a class="ghost" href="#doors">Two doors</a>
+      <div class="bar">
+        <a class="mark" href="#home">NAKHARAX GROUP</a>
+        <nav class="nav" aria-label="Main">
+          <a href="#vision">Our vision</a>
+          <a href="#ecosystem">Ecosystem</a>
+          <a href="#intelligence">Intelligence</a>
           <a class="btn" href="https://xpfirm.com">Open XpFirm</a>
         </nav>
       </div>
     </header>
-    <main id="top">
-      <div class="wrap">
-        <section class="hero">
-          <div>
-            <h1>Two public doors. Nothing else to remember.</h1>
-            <p class="lead">This page is the company. XpFirm is the product, and it already has its own address.</p>
-            <p class="thai" lang="th">หน้านี้คือบริษัท XpFirm คือผลิตภัณฑ์ และมีประตูของตัวเองแล้ว</p>
-            <div class="actions">
-              <a class="btn" href="https://xpfirm.com">Open XpFirm</a>
-              <a class="ghost" href="#doors">See both doors</a>
-            </div>
+    <main>
+      <div class="wrap hero" id="home">
+        <div>
+          <p class="kicker">Independent minds. One shared orbit.</p>
+          <p class="th" lang="th">ความคิดที่เป็นอิสระ บนวงโคจรแห่งเป้าหมายเดียวกัน</p>
+          <h1>Beyond ideas. Into impact.</h1>
+          <p class="th" lang="th">ก้าวข้ามขีดจำกัดความคิด สู่ผลลัพธ์ที่มีความหมาย</p>
+          <p class="intro">A connected world of human ambition, engineering, and artificial intelligence.</p>
+          <p class="th" lang="th">สถาปัตยกรรมแห่งอนาคตที่เชื่อมโยงความมุ่งมั่นของมนุษย์ วิศวกรรมเชิงลึก และปัญญาประดิษฐ์เข้าด้วยกันภายใต้ระบบสุริยะเดียวกัน</p>
+          <div class="actions">
+            <a class="btn" href="https://xpfirm.com">Open XpFirm</a>
+            <a class="ghost" href="#ecosystem">Explore our universe</a>
           </div>
-          <aside class="ledger" aria-label="Public doors">
-            <a href="https://xpfirm.com">
-              <div class="signal">
-                <small>Product door</small>
-                <strong>XpFirm</strong>
-                <p>Risk and discipline workspace. Human in control. Not a promise of returns.</p>
-              </div>
-            </a>
-            <a href="#top">
-              <div class="plain">
-                <small>Company door</small>
-                <strong>NakharaX Group</strong>
-                <p>You are here. This page does not replace the product.</p>
-              </div>
-            </a>
-          </aside>
-        </section>
-        <section class="doors" id="doors">
-          <article>
-            <h2>XpFirm</h2>
-            <p>The live product door is <a href="https://xpfirm.com">xpfirm.com</a>. It is a workspace for preparation and risk awareness, not a trading signal and not a profit claim.</p>
-          </article>
-          <article>
-            <h2>NakharaX</h2>
-            <p>The company door is this page. Other work stays off the public front. A repository is not a second website.</p>
-          </article>
-        </section>
-        <p class="note">No customer counts, prices, or performance figures are shown here. Those are not established on this page.</p>
+        </div>
+        <aside class="ledger" aria-label="XpFirm product door">
+          <a href="https://xpfirm.com">
+            <div class="signal">
+              <small>01 / Trader workspace</small>
+              <strong>XpFirm</strong>
+              <p>A trader risk and discipline workspace. Preparation, risk awareness, and consistent decisions — not a promise of returns.</p>
+            </div>
+          </a>
+          <div class="plain">
+            <small>Live product door</small>
+            <strong>xpfirm.com</strong>
+            <p lang="th">พื้นที่ทำงานเพื่อการบริหารความเสี่ยงและวินัย ไม่ใช่การสัญญาผลตอบแทน</p>
+          </div>
+        </aside>
       </div>
+      <section class="paper" id="vision">
+        <div class="wrap">
+          <h2>Not a collection of companies. A constellation of possibilities.</h2>
+          <p class="th" lang="th">ไม่ใช่เพียงกลุ่มบริษัท แต่คือกลุ่มดาวแห่งความเป็นไปได้</p>
+          <div class="grid2">
+            <article class="card">
+              <h3>ความชัดเจนในเป้าหมาย</h3>
+              <p lang="th">เราสร้างพื้นที่ให้ความเชี่ยวชาญของมนุษย์และศักยภาพของ AI มาร่วมกันเปลี่ยนความคิดให้เป็นผลงานที่มีความหมาย</p>
+            </article>
+            <article class="card">
+              <h3>One central star</h3>
+              <p>Our central star connects the vision. Each venture orbits with its own mission. Together, we build with clarity, discipline, and purpose.</p>
+            </article>
+          </div>
+          <div class="grid3">
+            <article class="card"><h3>Clarity</h3><p lang="th">ความชัดเจนในเป้าหมายและขอบเขต</p><p>Every venture begins with an explicit problem boundary and a disciplined scope.</p></article>
+            <article class="card"><h3>Discipline</h3><p lang="th">วินัยเชิงระบบและการตระหนักรู้ความเสี่ยง</p><p>Built around preparation and repeatable decisions, not speculative hype.</p></article>
+            <article class="card"><h3>Purpose</h3><p lang="th">เทคโนโลยีที่ขับเคลื่อนด้วยความรับผิดชอบของมนุษย์</p><p>Machine intelligence amplifies the work. Human judgment stays accountable.</p></article>
+          </div>
+        </div>
+      </section>
+      <section id="ecosystem">
+        <div class="wrap">
+          <h2>Different missions. One gravitational core.</h2>
+          <p class="th" lang="th">ภารกิจที่แตกต่าง ภายใต้แรงดึงดูดแกนกลางเดียวกัน</p>
+          <div class="grid3">
+            <article class="card">
+              <small>01 / Trader workspace</small>
+              <h3>XpFirm</h3>
+              <p>Designed around preparation, risk awareness, and consistent decision-making — not the promise of returns.</p>
+              <p class="th" lang="th">ออกแบบมาเพื่อการเตรียมตัว การประเมินความเสี่ยง และความสม่ำเสมอในการตัดสินใจ ไม่ใช่การสัญญาผลตอบแทน</p>
+              <p class="meta">Free Core Forever · Transparent scope</p>
+              <div class="actions"><a class="btn" href="https://xpfirm.com">Open XpFirm</a></div>
+            </article>
+            <article class="card">
+              <small>02 / Distinct initiative</small>
+              <h3>NakharaX Protocol</h3>
+              <p>A separate initiative. Distinct from XpFirm, with its own identity and development path.</p>
+              <p class="th" lang="th">อีกหนึ่งภารกิจในจักรวาล NakharaX ที่แยกจาก XpFirm</p>
+              <p class="fine">Public scope still requires approved material. This is not the product door.</p>
+            </article>
+            <article class="card">
+              <small>03 / Internal operations</small>
+              <h3>AI Workforce</h3>
+              <p>Hermes coordinates specialist work under human direction. No customer trading authority.</p>
+              <p class="th" lang="th">Hermes ประสานงานภายใต้การนำของมนุษย์ ไม่มีสิทธิ์เทรดแทนลูกค้า</p>
+              <p class="fine">Conceptual architecture. Not live telemetry.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="paper" id="intelligence">
+        <div class="wrap">
+          <h2>Intelligence is powerful. Direction makes it matter.</h2>
+          <p class="th" lang="th">พลังของ AI นั้นยิ่งใหญ่ แต่ทิศทางจากมนุษย์คือสิ่งที่ทำให้มีความหมาย</p>
+          <p>People define the purpose, set the boundaries, and remain accountable. AI amplifies the work. Human judgment stays at the helm.</p>
+          <div class="flow">
+            <div><strong>Human intent</strong><span class="fine">Objective, scope, and risk limits come first.</span></div>
+            <div><strong>Hermes</strong><span class="fine">Approved work is routed inside an explicit boundary.</span></div>
+            <div><strong>Specialists</strong><span class="fine">Engineering and research, with no trading authority.</span></div>
+            <div><strong>Verified work</strong><span class="fine">A person signs off before the result is accepted.</span></div>
+          </div>
+        </div>
+      </section>
+      <section id="connect">
+        <div class="wrap">
+          <h2>The future isn't somewhere we go. It's something we build.</h2>
+          <p class="th" lang="th">อนาคตไม่ใช่จุดหมายที่เราเพียงเดินทางไปถึง แต่คือสิ่งที่เราร่วมกันสร้างขึ้น</p>
+          <div class="actions"><a class="btn" href="https://xpfirm.com">Open XpFirm</a></div>
+        </div>
+      </section>
     </main>
-    <footer>
-      <div class="wrap">NakharaX Group · company door · product at xpfirm.com</div>
-    </footer>
+    <footer><div class="wrap">NakharaX Group · Human ambition × engineered intelligence · Product door at xpfirm.com</div></footer>
   </body>
 </html>
