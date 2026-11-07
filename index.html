@@ -4,127 +4,167 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>NakharaX Group — Beyond ideas. Into impact.</title>
-<meta name="description" content="NakharaX Group. Independent minds. One shared orbit. Beyond ideas. Into impact.">
+<meta name="description" content="NakharaX Group. Independent minds. One shared orbit. XpFirm is the trader risk workspace.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--ink:#111a4a;--body:#3b3e47;--muted:#7c7f88;--line:#e3e4e8;--canvas:#f7f8f6;--max:1120px}
+:root{--ink:#101a45;--body:#3c4250;--muted:#7b808c;--line:#e6e8ee;--bg:#f6f7f9;--blue:#2c4f9e;--orange:#e86a2c}
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{background:var(--canvas);color:var(--body);font-family:Inter,"Noto Sans Thai",sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--body);font-family:Inter,"Noto Sans Thai",sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.top{height:36px;background:#1d4e89;color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;font-size:13px}
-.top a{font-weight:600}
-header{height:72px;display:flex;align-items:center}
-.bar{width:min(1240px,calc(100% - 64px));margin:0 auto;display:flex;align-items:center;justify-content:space-between}
-.mark{font-size:22px;font-weight:600;letter-spacing:-.04em;color:#1a1a1a}
-nav{display:flex;align-items:center;gap:28px}
-nav a{font-size:15px;color:#2a2a2a}
-.ghost{height:36px;padding:0 14px;border:1px solid #d5d7db;border-radius:8px;background:#fff;font-weight:500}
-.ghost:hover{border-color:#1a1a1a}
-.hero{position:relative;height:min(760px,92vh);min-height:620px;overflow:hidden}
-#map{position:absolute;inset:0;width:100%;height:100%;display:block}
-.scene{position:relative;z-index:1;height:100%;width:min(1240px,calc(100% - 64px));margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;align-items:end;padding:0 0 92px;pointer-events:none}
-.scene *{pointer-events:auto}
-h1{font-size:clamp(56px,6.4vw,84px);line-height:.96;letter-spacing:-.045em;font-weight:600;color:var(--ink);max-width:8.2ch}
-.sub{margin-top:18px;max-width:34ch;font-size:18px;color:#3c4250}
+.announce{height:38px;background:#3557a8;color:#fff;display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px}
+.announce a{font-weight:600}
+header{height:74px;display:flex;align-items:center}
+.bar,.hero-copy,.stage,.split,.dark-in,.foot{width:min(1180px,calc(100% - 72px));margin:0 auto}
+.bar{display:flex;align-items:center;justify-content:space-between}
+.mark{font-size:28px;font-weight:650;letter-spacing:-.045em;color:#161616}
+nav{display:flex;align-items:center;gap:26px;font-size:15px;color:#222}
+.pill{height:38px;padding:0 14px;border:1px solid #d7dae2;border-radius:10px;background:#fff;display:inline-flex;align-items:center;font-weight:500}
+.pill:hover{border-color:#222}
+.fill{height:42px;padding:0 16px;border-radius:10px;background:var(--ink);color:#fff;display:inline-flex;align-items:center;gap:8px;font-weight:600;border:0}
+.hero{position:relative;height:860px;overflow:hidden}
+#map{position:absolute;inset:0;width:100%;height:100%}
+.hero-copy{position:relative;z-index:1;height:100%;display:grid;grid-template-columns:1.15fr .85fr;align-items:end;padding-bottom:78px}
+.badge{display:inline-flex;align-items:center;gap:8px;height:32px;padding:0 12px;border-radius:999px;background:rgba(255,255,255,.86);border:1px solid #e4e7ee;font-size:13px;color:#3a4150;margin-bottom:22px}
+h1{font-size:68px;line-height:.98;letter-spacing:-.045em;font-weight:650;color:var(--ink);max-width:9ch}
+.sub{margin-top:16px;max-width:38ch;font-size:18px;color:#2f3644}
 .th{margin-top:8px;color:var(--muted);font-size:15px}
-.card{width:min(420px,100%);margin-left:auto;background:#fff;border-radius:16px;box-shadow:0 24px 70px rgba(17,26,74,.12);padding:18px 18px 16px;transform:translateY(16px);animation:rise .7s .25s cubic-bezier(.16,1,.3,1) both}
-.card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.live{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--ink)}
-.pulse{width:8px;height:8px;border-radius:50%;background:#ec652b;box-shadow:0 0 0 0 rgba(236,101,43,.6);animation:ping 1.8s infinite}
-.typed{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:#243056;min-height:22px;background:#f4f7f8;border-radius:8px;padding:8px 10px}
-.caret{display:inline-block;width:7px;height:14px;background:#111a4a;margin-left:2px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
-.feed{margin-top:12px;height:132px;overflow:hidden;position:relative;border-top:1px solid var(--line)}
-.feed:before,.feed:after{content:"";position:absolute;left:0;right:0;height:18px;z-index:1;pointer-events:none}
-.feed:before{top:0;background:linear-gradient(#fff,transparent)}
-.feed:after{bottom:0;background:linear-gradient(transparent,#fff)}
-.rail{animation:scroll 14s linear infinite}
-.row{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid #eef0f2;font-size:13px}
-.row b{color:var(--ink);font-weight:600}
-.row span{color:var(--muted)}
-.tabs{display:flex;gap:8px;margin-top:14px}
-.tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;height:30px;padding:0 12px;font:inherit;font-size:12px;font-weight:600;color:var(--ink);cursor:pointer}
-.tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
-.chart-sec{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center;width:min(1240px,calc(100% - 64px));margin:0 auto;padding:96px 0 40px;min-height:520px}
-.chart-sec h2{font-size:clamp(36px,4vw,52px);line-height:1.05;letter-spacing:-.04em;color:var(--ink);font-weight:600;max-width:16ch}
-#chart{width:100%;height:420px;display:block}
-.switch{width:min(1240px,calc(100% - 64px));margin:0 auto;padding:40px 0 96px;display:grid;grid-template-columns:280px 1fr;gap:28px}
-.switch button{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:16px 0;font:inherit;font-size:18px;color:var(--muted);cursor:pointer}
-.switch button.on{color:var(--ink);font-weight:600}
-.face{background:#fff;border:1px solid var(--line);border-radius:16px;min-height:240px;padding:28px;box-shadow:0 10px 30px rgba(17,26,74,.04)}
-.face h3{font-size:28px;letter-spacing:-.03em;color:var(--ink);margin-bottom:10px}
-.face p{max-width:52ch}
-.face a{display:inline-flex;margin-top:18px}
-footer{border-top:1px solid var(--line);padding:28px 0 40px}
-.foot{width:min(1240px,calc(100% - 64px));margin:0 auto;display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
-@keyframes rise{to{transform:none}}
-@keyframes ping{70%{box-shadow:0 0 0 8px rgba(236,101,43,0)}}
+.btns{display:flex;gap:10px;margin-top:22px}
+.card{width:360px;margin-left:auto;background:#fff;border-radius:16px;box-shadow:0 18px 50px rgba(16,26,69,.12);padding:16px;min-height:168px}
+.card .k{font:12px/1 ui-monospace,SFMono-Regular,Menlo,monospace;color:#667;min-height:18px}
+.caret{display:inline-block;width:7px;height:13px;background:#243056;margin-left:3px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+.widget{margin-top:12px}
+.widget b{display:block;font-size:15px;color:var(--ink)}
+.widget small{color:var(--muted)}
+.rows{margin-top:10px;border-top:1px solid var(--line)}
+.rows div{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #f0f2f6;font-size:13px}
+.rows strong{color:var(--ink)}
+.stage{padding:88px 0 40px;display:grid;grid-template-columns:.9fr 1.1fr;gap:36px;align-items:center}
+.stage h2{font-size:44px;line-height:1.05;letter-spacing:-.04em;color:var(--ink);font-weight:650;max-width:14ch}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 28px}
+.pills button{height:34px;padding:0 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font:inherit;font-size:14px;color:#333;cursor:pointer}
+.pills button.on{background:#f3f5f8;border-color:#d5d9e2;font-weight:600;color:var(--ink)}
+.quote{font-size:22px;line-height:1.35;color:var(--ink);max-width:28ch;font-weight:550}
+.quote span{display:block;margin-top:12px;font-size:14px;color:var(--muted);font-weight:400}
+.field{position:relative;height:460px;background:radial-gradient(circle at 70% 40%, #fff 0 18%, transparent 19%),radial-gradient(#f0b89a 1.1px, transparent 1.2px);background-size:auto,14px 14px;border-radius:28px}
+.stack{position:absolute;right:36px;top:54px;width:300px}
+.back{background:#fff;border-radius:16px;box-shadow:0 10px 30px rgba(16,26,69,.06);padding:14px 16px;margin-bottom:10px;font-size:13px}
+.back b{display:block;color:var(--ink);margin-bottom:4px}
+.hot{background:var(--orange);color:#fff;border-radius:16px;padding:18px 18px 14px;box-shadow:0 16px 40px rgba(232,106,44,.28);margin-top:-28px;position:relative}
+.hot b{font-size:15px}
+.hot strong{display:block;font-size:28px;letter-spacing:-.03em;margin:8px 0 4px}
+.hot svg{display:block;margin-top:8px}
+.cap{position:absolute;left:28px;bottom:24px;font-size:12px;color:#8a5a42}
+.split{display:grid;grid-template-columns:1fr .9fr;gap:48px;padding:72px 0;align-items:start}
+.split h3{font-size:28px;color:var(--ink);letter-spacing:-.03em;margin-bottom:8px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:28px}
+.code{background:#f3f5f7;border-radius:16px;padding:18px 18px 8px;font:13px/1.7 ui-monospace,SFMono-Regular,Menlo,monospace;color:#243056;overflow:auto}
+.code .tag{color:var(--muted);font-family:Inter,sans-serif;font-size:11px;letter-spacing:.08em}
+.code .s{color:#0f8f78}.code .n{color:#c45b2d}.code .k{color:#3557a8}
+.dark{background:#071820;color:#d5e4e1;padding:92px 0 80px}
+.dark-in{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.dark h2{font-size:52px;line-height:1.02;letter-spacing:-.04em;color:#d9f3ee;font-weight:600;max-width:12ch}
+.dark p{margin-top:16px;max-width:42ch;color:#b7c9c6}
+.slabs{position:relative;height:280px}
+.slab{position:absolute;left:40px;width:250px;height:78px;border-radius:18px;background:linear-gradient(180deg,#24343f,#17262f);box-shadow:0 18px 30px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.08);transform:rotateX(58deg) rotateZ(-24deg);transform-style:preserve-3d}
+.slab:nth-child(1){top:20px}.slab:nth-child(2){top:78px}.slab:nth-child(3){top:136px}
+.slab i{position:absolute;right:-210px;top:28px;width:180px;border-top:1px solid #3d5560;color:#9fb0b4;font-style:normal;font-size:14px;padding-top:6px;transform:none}
+footer{padding:28px 0 40px}
+.foot{display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
 @keyframes blink{50%{opacity:0}}
-@keyframes scroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
 @media(max-width:900px){
-  .bar,.scene,.chart-sec,.switch,.foot{width:calc(100% - 32px)}
-  .scene,.chart-sec,.switch{grid-template-columns:1fr}
-  nav a:not(.ghost){display:none}
-  h1{font-size:46px}
-  .hero{height:auto;min-height:0;padding-bottom:28px}
-  .scene{padding:220px 0 24px}
-  .card{margin:24px 0 0}
+  .bar,.hero-copy,.stage,.split,.dark-in,.foot{width:calc(100% - 32px)}
+  .hero{height:auto}
+  .hero-copy,.stage,.split,.dark-in{grid-template-columns:1fr}
+  .hero-copy{padding:280px 0 32px}
+  h1{font-size:46px}.stage h2,.dark h2{font-size:34px}
+  .card{width:100%;margin-top:24px}
+  nav a:not(.pill){display:none}
+  .field{height:380px}.two{grid-template-columns:1fr}
+  .slab i{display:none}
 }
-@media(prefers-reduced-motion:reduce){
-  .card,.pulse,.caret,.rail{animation:none}
-  .rail{transform:none}
-}
+@media(prefers-reduced-motion:reduce){.caret{animation:none}}
 </style>
 </head>
 <body>
-<div class="top"><span>Product door is open.</span><a href="https://xpfirm.com">Open XpFirm</a></div>
-<header>
-  <div class="bar">
-    <a class="mark" href="#home">nakharax</a>
-    <nav>
-      <a href="#orbit">Orbit</a>
-      <a href="#missions">Missions</a>
-      <a class="ghost" href="https://xpfirm.com">Open XpFirm</a>
-    </nav>
-  </div>
-</header>
+<div class="announce"><span>Product door is open.</span><a href="https://xpfirm.com">Open XpFirm</a></div>
+<header><div class="bar"><a class="mark" href="#home">nakharax</a><nav><a href="#workspace">Workspace</a><a href="#record">Record</a><a href="#stack">Stack</a><a class="pill" href="https://xpfirm.com">Open XpFirm</a></nav></div></header>
 <main id="home">
-  <section class="hero" id="hero">
+  <section class="hero">
     <canvas id="map" aria-hidden="true"></canvas>
-    <div class="scene">
+    <div class="hero-copy">
       <div>
+        <div class="badge">Free Core · No trading signals</div>
         <h1>Beyond ideas. Into impact.</h1>
         <p class="sub">A connected world of human ambition, engineering, and artificial intelligence.</p>
         <p class="th" lang="th">ก้าวข้ามขีดจำกัดความคิด สู่ผลลัพธ์ที่มีความหมาย</p>
+        <div class="btns"><a class="fill" href="https://xpfirm.com">Open XpFirm</a><a class="pill" href="#workspace">See the workspace</a></div>
       </div>
       <aside class="card" aria-label="XpFirm workspace">
-        <div class="card-top"><span class="k">Trader workspace</span><span class="live"><i class="pulse"></i><span id="phase">Live</span></span></div>
-        <div class="typed" id="typed"></div>
-        <div class="feed" id="feed"><div class="rail" id="rail"></div></div>
-        <div class="tabs" id="tabs"></div>
+        <div class="k" id="typed"></div>
+        <div class="widget" id="widget" hidden>
+          <b>XpFirm</b>
+          <small>Know your drawdown. Stay ahead of your limits.</small>
+          <div class="rows">
+            <div><span>Daily drawdown</span><strong>In view</strong></div>
+            <div><span>Limits</span><strong>Yours to set</strong></div>
+            <div><span>Trades</span><strong>Recorded</strong></div>
+          </div>
+          <p class="th">Sample interface · not live telemetry</p>
+        </div>
       </aside>
     </div>
   </section>
-  <section class="chart-sec" id="orbit">
+  <section class="stage" id="workspace">
     <div>
-      <h2>Different missions. One gravitational core.</h2>
-      <p class="sub">Independent minds. One shared orbit. Not a collection of companies. A constellation of possibilities. The future isn't somewhere we go. It's something we build.</p>
-      <p class="th" lang="th">ไม่ใช่เพียงกลุ่มบริษัท แต่คือกลุ่มดาวแห่งความเป็นไปได้</p>
+      <h2>Know your drawdown. Stay ahead of your limits.</h2>
+      <div class="pills" id="pills"></div>
+      <p class="quote">Preparation, risk awareness, and consistent decisions — not a promise of returns.<span>XpFirm · software for the trader. Not a prop firm. No signals.</span></p>
     </div>
-    <canvas id="chart" aria-hidden="true"></canvas>
+    <div class="field">
+      <div class="stack" id="stack"></div>
+      <div class="cap">Sample interface · not live telemetry</div>
+    </div>
   </section>
-  <section class="switch" id="missions">
-    <div id="mission-nav"></div>
-    <article class="face" id="face"></article>
+  <section class="split" id="record">
+    <div>
+      <h3>The workspace, written down.</h3>
+      <p>Track daily and overall drawdown, check monitoring freshness, and set your own loss limits. Review recorded trades in the same MT5 workspace. Orders stay in MT5.</p>
+      <div class="two">
+        <div><h3>Close to the account</h3><p>Each linked account shows drawdown, monitoring state, and the last report. You still check MT5 before you act.</p></div>
+        <div><h3>Your limits</h3><p>Daily and overall limits are entered by you. Free Core stays free. Expert Core is pay-as-you-go credits. No numeric price is published here.</p></div>
+      </div>
+    </div>
+    <pre class="code"><div class="tag">RECORD</div>{
+  <span class="k">"workspace"</span>: <span class="s">"xpfirm"</span>,
+  <span class="k">"model"</span>: <span class="s">"free_core"</span>,
+  <span class="k">"daily_drawdown"</span>: <span class="s">"in_view"</span>,
+  <span class="k">"limits"</span>: <span class="s">"set_by_you"</span>,
+  <span class="k">"signals"</span>: <span class="n">false</span>,
+  <span class="k">"client_capital"</span>: <span class="n">false</span>,
+  <span class="k">"telemetry"</span>: <span class="s">"not_live"</span>
+}</pre>
+  </section>
+  <section class="dark" id="stack">
+    <div class="dark-in">
+      <div>
+        <h2>Different missions. One gravitational core.</h2>
+        <p>Not a collection of companies. A constellation of possibilities. The future isn't somewhere we go. It's something we build. NakharaX Protocol is a separate initiative. Hermes coordinates specialists under human direction and has no customer trading authority. Conceptual architecture, not live telemetry.</p>
+        <p class="th" lang="th">ไม่ใช่เพียงกลุ่มบริษัท แต่คือกลุ่มดาวแห่งความเป็นไปได้</p>
+      </div>
+      <div class="slabs" aria-hidden="true">
+        <div class="slab"><i>You decide</i></div>
+        <div class="slab"><i>XpFirm</i></div>
+        <div class="slab"><i>Your MT5</i></div>
+      </div>
+    </div>
   </section>
 </main>
 <footer><div class="foot"><span>nakharax · independent minds, one shared orbit</span><a href="https://xpfirm.com">xpfirm.com</a></div></footer>
 <script>
-(function () {
+(function(){
   var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var lands = [
     [[-168,71],[-141,70],[-128,71],[-105,73],[-86,72],[-64,66],[-56,54],[-64,47],[-80,43],[-70,32],[-81,25],[-90,29],[-97,26],[-112,23],[-115,32],[-124,32],[-124,49],[-140,60],[-166,64]],
@@ -136,203 +176,61 @@ footer{border-top:1px solid var(--line);padding:28px 0 40px}
     [[-62,83],[-42,83],[-22,80],[-44,70],[-58,68],[-68,76]],
     [[-16,64],[-14,66],[-22,66],[-24,64]]
   ];
-  function pin(poly, x, y) {
-    var c = false, j = poly.length - 1;
-    for (var i = 0; i < poly.length; i++) {
-      var xi = poly[i][0], yi = poly[i][1], xj = poly[j][0], yj = poly[j][1];
-      if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c;
-      j = i;
-    }
-    return c;
-  }
-  function project(lon, lat, w, h) {
-    return [(lon + 180) / 360 * w, (78 - lat) / 132 * h];
-  }
-  var map = document.getElementById("map");
-  var ctx = map.getContext("2d");
-  var dots = [];
-  var route = [];
-  var pointer = {x: -999, y: -999, on: false};
-  function build() {
-    var dpr = Math.min(devicePixelRatio || 1, 2);
-    map.width = map.clientWidth * dpr;
-    map.height = map.clientHeight * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    var w = map.clientWidth, h = map.clientHeight;
-    dots = [];
-    var polys = lands.map(function (poly) { return poly.map(function (p) { return project(p[0], p[1], w, h); }); });
-    var step = w > 800 ? 8 : 11;
-    for (var y = 8; y < h; y += step) {
-      for (var x = 8; x < w; x += step) {
-        for (var p = 0; p < polys.length; p++) {
-          if (pin(polys[p], x, y)) { dots.push([x, y, x / w]); break; }
-        }
-      }
-    }
-    route = [];
-    var a = project(-74, 40, w, h), b = project(-30, 48, w, h), c = project(2, 51, w, h);
-    for (var t = 0; t <= 1; t += 0.02) {
-      var u = 1 - t;
-      route.push([u*u*a[0] + 2*u*t*b[0] + t*t*c[0], u*u*a[1] + 2*u*t*b[1] + t*t*c[1]]);
-    }
-  }
-  function draw(now) {
-    var w = map.clientWidth, h = map.clientHeight;
-    ctx.clearRect(0, 0, w, h);
-    var shift = pointer.on ? (pointer.x / w - 0.5) * -16 : 0;
-    ctx.save();
-    ctx.translate(shift, pointer.on ? (pointer.y / h - 0.5) * -10 : 0);
-    for (var i = 0; i < dots.length; i++) {
-      var d = dots[i];
-      var near = pointer.on ? Math.hypot(d[0] - pointer.x, d[1] - pointer.y) : 999;
-      var breathe = reduced ? 0.75 : 0.55 + Math.sin(now / 700 + d[0] * 0.02) * 0.25;
-      var hot = near < 90 ? 1 : breathe;
-      var r = Math.round(55 + d[2] * 20), g = Math.round(168 - d[2] * 48), b = Math.round(146 + d[2] * 48);
-      ctx.fillStyle = "rgba(" + r + "," + g + "," + b + "," + (near < 90 ? 1 : hot) + ")";
-      ctx.beginPath();
-      ctx.arc(d[0], d[1], near < 90 ? 2.6 : 1.7, 0, 6.3);
-      ctx.fill();
-    }
-    ctx.strokeStyle = "#1d4e89";
-    ctx.lineWidth = 2.2;
-    ctx.setLineDash([2, 8]);
-    ctx.lineDashOffset = reduced ? 0 : -((now / 30) % 80);
-    ctx.beginPath();
-    route.forEach(function (p, idx) { idx ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]); });
-    ctx.stroke();
-    var travel = reduced ? route[route.length - 1] : route[Math.floor((now / 40) % route.length)];
-    ctx.setLineDash([]);
-    ctx.fillStyle = "#111a4a";
-    ctx.beginPath();
-    ctx.arc(travel[0], travel[1], 4.5, 0, 6.3);
-    ctx.fill();
-    ctx.restore();
-    if (!reduced) requestAnimationFrame(draw);
-  }
-  var hero = document.getElementById("hero");
-  hero.addEventListener("pointermove", function (e) {
-    var r = map.getBoundingClientRect();
-    pointer.x = e.clientX - r.left;
-    pointer.y = e.clientY - r.top;
-    pointer.on = true;
-  });
-  hero.addEventListener("pointerleave", function () { pointer.on = false; });
-  build();
-  addEventListener("resize", build);
-  requestAnimationFrame(draw);
-
-  var states = [
-    ["Prepare", "Session open. Scope is visible before the next decision."],
-    ["Hold", "Risk noted. The limit stays in view."],
-    ["Human", "Decision held. A person remains accountable."]
-  ];
-  var events = ["Scope checked", "Risk noted", "Decision held", "No return promised", "Human signed", "Free Core stays open"];
-  var rail = document.getElementById("rail");
-  events.concat(events).forEach(function (name, idx) {
-    var row = document.createElement("div");
-    row.className = "row";
-    var strong = document.createElement("b");
-    strong.textContent = name;
-    var mark = document.createElement("span");
-    mark.textContent = "0" + ((idx % events.length) + 1);
-    row.appendChild(strong);
-    row.appendChild(mark);
-    rail.appendChild(row);
-  });
-  var tabs = document.getElementById("tabs");
-  var phase = document.getElementById("phase");
-  var typed = document.getElementById("typed");
-  var cursor = 0;
-  var text = "open xpfirm.com";
-  function type() {
-    cursor = (cursor + 1) % (text.length + 10);
-    typed.textContent = text.slice(0, Math.min(cursor, text.length));
-    typed.appendChild(document.createElement("i")).className = "caret";
-  }
-  function show(n) {
-    var s = states[(n + states.length) % states.length];
-    phase.textContent = s[0];
-    Array.prototype.forEach.call(tabs.children, function (btn, idx) { btn.classList.toggle("on", idx === (n + states.length) % states.length); });
-  }
-  states.forEach(function (s, idx) {
-    var btn = document.createElement("button");
-    btn.type = "button";
-    btn.textContent = s[0];
-    btn.addEventListener("click", function () { show(idx); });
-    tabs.appendChild(btn);
-  });
-  show(0);
-  if (!reduced) {
-    setInterval(type, 90);
-    setInterval(function () { show((["Prepare", "Hold", "Human"].indexOf(phase.textContent) + 1)); }, 2800);
-  } else {
-    typed.textContent = text;
-  }
-
-  var chart = document.getElementById("chart");
-  var cctx = chart.getContext("2d");
-  function drawChart(now) {
-    var dpr = Math.min(devicePixelRatio || 1, 2);
-    var w = chart.clientWidth, h = chart.clientHeight;
-    if (chart.width !== Math.floor(w * dpr)) {
-      chart.width = w * dpr; chart.height = h * dpr;
-    }
-    cctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    cctx.clearRect(0, 0, w, h);
-    var n = 28, pts = [];
-    for (var i = 0; i < n; i++) {
-      var x = 24 + i * ((w - 48) / (n - 1));
-      var wave = Math.sin(i * 0.45 + (reduced ? 0 : now / 900)) * 16;
-      var y = h - 40 - Math.pow(i / (n - 1), 1.35) * (h - 100) + wave;
-      pts.push([x, y]);
-    }
-    cctx.beginPath();
-    pts.forEach(function (p, i) { i ? cctx.lineTo(p[0], p[1]) : cctx.moveTo(p[0], p[1]); });
-    cctx.strokeStyle = "rgba(47,157,143,.45)";
-    cctx.lineWidth = 2;
-    cctx.stroke();
-    pts.forEach(function (p, i) {
-      cctx.fillStyle = i > n - 5 ? "#111a4a" : "#2f9d8f";
-      cctx.beginPath();
-      cctx.arc(p[0], p[1], i > n - 4 ? 5 : 3.4, 0, 6.3);
-      cctx.fill();
+  function pin(poly,x,y){var c=false,j=poly.length-1;for(var i=0;i<poly.length;i++){var xi=poly[i][0],yi=poly[i][1],xj=poly[j][0],yj=poly[j][1];if((yi>y)!==(yj>y)&&x<(xj-xi)*(y-yi)/(yj-yi)+xi)c=!c;j=i;}return c;}
+  function project(lon,lat,w,h){return [(lon+180)/360*w,(78-lat)/132*h];}
+  var map=document.getElementById("map"), ctx=map.getContext("2d"), dots=[], route=[];
+  function build(){
+    var dpr=Math.min(devicePixelRatio||1,2), w=map.clientWidth, h=map.clientHeight;
+    map.width=w*dpr; map.height=h*dpr; ctx.setTransform(dpr,0,0,dpr,0,0);
+    var polys=lands.map(function(poly){return poly.map(function(p){return project(p[0],p[1],w,h);});});
+    dots=[]; var step=w>800?7:10;
+    for(var y=6;y<h;y+=step)for(var x=6;x<w;x+=step)for(var p=0;p<polys.length;p++)if(pin(polys[p],x,y)){dots.push([x,y,x/w]);break;}
+    var a=project(-48,46,w,h), b=project(-18,49,w,h), c=project(2,52,w,h);
+    route=[];
+    for(var t=0;t<=1;t+=0.04){var u=1-t;route.push([u*u*a[0]+2*u*t*b[0]+t*t*c[0], u*u*a[1]+2*u*t*b[1]+t*t*c[1]]);}
+    ctx.clearRect(0,0,w,h);
+    dots.forEach(function(d){
+      var r=Math.round(70+d[2]*10), g=Math.round(176-d[2]*70), b=Math.round(168+d[2]*40);
+      ctx.fillStyle="rgba("+r+","+g+","+b+","+(0.45+d[2]*0.4)+")";
+      ctx.beginPath(); ctx.arc(d[0],d[1],1.35,0,6.3); ctx.fill();
     });
-    if (!reduced) requestAnimationFrame(drawChart);
+    ctx.strokeStyle="#243056"; ctx.lineWidth=1.6; ctx.setLineDash([1.5,7]);
+    ctx.beginPath(); route.forEach(function(p,i){i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]);}); ctx.stroke();
+    var end=route[route.length-1];
+    ctx.setLineDash([]); ctx.fillStyle="#111a4a"; ctx.beginPath(); ctx.arc(end[0],end[1],4,0,6.3); ctx.fill();
   }
-  requestAnimationFrame(drawChart);
-
-  var missions = [
-    ["XpFirm", "A trader risk and discipline workspace. Preparation, risk awareness, and consistent decisions — not a promise of returns. Free Core Forever. Transparent scope.", "https://xpfirm.com", "Open XpFirm"],
-    ["NakharaX Protocol", "A separate initiative, distinct from XpFirm, with its own identity and path. Public destination is not confirmed.", "", ""],
-    ["Hermes", "Hermes coordinates specialists under human direction. No customer trading authority. Conceptual architecture, not live telemetry.", "", ""]
+  build(); addEventListener("resize", build);
+  var typed=document.getElementById("typed"), widget=document.getElementById("widget"), line="drawdown --in-view", n=0;
+  function type(){ n++; typed.textContent=line.slice(0, Math.min(n,line.length)); typed.appendChild(document.createElement("i")).className="caret"; if(n>line.length+8) widget.hidden=false; if(n<line.length+16 && !reduced) setTimeout(type,70); else widget.hidden=false; }
+  if(reduced){ typed.textContent=line; widget.hidden=false; } else type();
+  var views=[
+    ["Account visibility","Drawdown","In view","Last report","Shown","Monitoring","Freshness"],
+    ["Limits you set","Daily limit","You enter it","Overall limit","You enter it","Signals","None"],
+    ["Recorded trades","Deals","In time order","Orders","Still in MT5","Advice","None"]
   ];
-  var nav = document.getElementById("mission-nav");
-  var face = document.getElementById("face");
-  function faceAt(i) {
-    face.replaceChildren();
-    var h = document.createElement("h3");
-    h.textContent = missions[i][0];
-    var p = document.createElement("p");
-    p.textContent = missions[i][1];
-    face.appendChild(h);
-    face.appendChild(p);
-    if (missions[i][2]) {
-      var a = document.createElement("a");
-      a.className = "ghost";
-      a.href = missions[i][2];
-      a.textContent = missions[i][3];
-      face.appendChild(a);
-    }
-    Array.prototype.forEach.call(nav.children, function (btn, idx) { btn.classList.toggle("on", idx === i); });
+  var pills=document.getElementById("pills"), stack=document.getElementById("stack");
+  function show(i){
+    stack.replaceChildren();
+    var v=views[i];
+    var back=document.createElement("div"); back.className="back";
+    var bb=document.createElement("b"); bb.textContent=v[1]; var bs=document.createElement("span"); bs.textContent=v[2];
+    back.appendChild(bb); back.appendChild(bs); stack.appendChild(back);
+    var hot=document.createElement("div"); hot.className="hot";
+    var hb=document.createElement("b"); hb.textContent="XpFirm · "+v[0];
+    var hs=document.createElement("strong"); hs.textContent=v[4];
+    var svg=document.createElementNS("http://www.w3.org/2000/svg","svg");
+    svg.setAttribute("viewBox","0 0 240 54"); svg.setAttribute("width","240"); svg.setAttribute("height","54");
+    var path=document.createElementNS("http://www.w3.org/2000/svg","path");
+    path.setAttribute("d","M4 36 C 30 34, 40 22, 62 24 S 96 40, 120 28 160 16, 188 20 220 30, 236 18");
+    path.setAttribute("fill","none"); path.setAttribute("stroke","#fff"); path.setAttribute("stroke-width","2.4");
+    svg.appendChild(path); hot.appendChild(hb); hot.appendChild(hs); hot.appendChild(svg); stack.appendChild(hot);
+    var back2=document.createElement("div"); back2.className="back";
+    var cb=document.createElement("b"); cb.textContent=v[5]; var cs=document.createElement("span"); cs.textContent=v[6];
+    back2.appendChild(cb); back2.appendChild(cs); stack.appendChild(back2);
+    Array.prototype.forEach.call(pills.children,function(btn,idx){btn.classList.toggle("on",idx===i);});
   }
-  missions.forEach(function (m, idx) {
-    var btn = document.createElement("button");
-    btn.type = "button";
-    btn.textContent = m[0];
-    btn.addEventListener("click", function () { faceAt(idx); });
-    nav.appendChild(btn);
-  });
-  faceAt(0);
+  views.forEach(function(v,i){var b=document.createElement("button"); b.type="button"; b.textContent=v[0]; b.addEventListener("click",function(){show(i);}); pills.appendChild(b);});
+  show(0);
 })();
 </script>
 </body>
