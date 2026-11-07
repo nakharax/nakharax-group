@@ -1,32 +1,217 @@
 <!doctype html>
-<html lang="en" data-lang-mode="en" data-theme="cosmic">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="theme-color" content="#05060b" />
-    <meta name="description" content="NakharaX Group — Engineering intelligence. Building with purpose. Explore our connected solar system of technology and human ambition." />
-    <title>NakharaX Group — Solar System &amp; Ecosystem</title>
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f6f8" />
+    <title>NakharaX Group</title>
+    <meta
+      name="description"
+      content="NakharaX Group has two public doors: this company page, and XpFirm at xpfirm.com."
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="brand.css" />
-    <link rel="stylesheet" href="launch-film/film.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Thai:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #111a4a;
+        --ink: #3b3e47;
+        --steel: #7c7f88;
+        --line: #e3e4e8;
+        --canvas: #f6f6f8;
+        --white: #ffffff;
+        --orange: #ec652b;
+        --sea: #167e6c;
+        --max: 1120px;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--canvas);
+        color: var(--ink);
+        font-family: Inter, "Noto Sans Thai", sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+      }
+      a { color: inherit; }
+      a:focus-visible, button:focus-visible {
+        outline: 2px solid var(--navy);
+        outline-offset: 3px;
+      }
+      .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background: rgba(246, 246, 248, 0.92);
+        border-bottom: 1px solid var(--line);
+      }
+      .bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 64px;
+        gap: 16px;
+      }
+      .mark {
+        color: var(--navy);
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        text-decoration: none;
+      }
+      nav { display: flex; gap: 8px; align-items: center; }
+      .btn, .ghost {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 10px 18px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        text-decoration: none;
+      }
+      .btn {
+        background: var(--navy);
+        color: var(--white);
+        box-shadow: rgba(17, 26, 74, 0.1) 0 1px 3px;
+      }
+      .ghost {
+        background: transparent;
+        color: var(--navy);
+        border: 1px solid var(--navy);
+      }
+      main { padding: 72px 0 96px; }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 48px;
+        align-items: end;
+      }
+      h1 {
+        margin: 0 0 16px;
+        color: var(--navy);
+        font-size: clamp(40px, 6vw, 60px);
+        line-height: 1;
+        letter-spacing: -0.03em;
+        font-weight: 600;
+        max-width: 12ch;
+      }
+      .lead { margin: 0; max-width: 38ch; font-size: 18px; line-height: 1.4; }
+      .thai { margin: 12px 0 0; color: var(--steel); }
+      .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+      .ledger {
+        background: var(--white);
+        border-radius: 8px;
+        box-shadow:
+          rgba(0, 0, 0, 0.02) 0 40px 32px,
+          rgba(0, 0, 0, 0.04) 0 7px 5px,
+          rgba(0, 0, 0, 0.07) 0 3px 2px;
+        overflow: hidden;
+      }
+      .ledger a { display: block; text-decoration: none; color: inherit; }
+      .signal {
+        background: var(--orange);
+        color: var(--white);
+        padding: 24px;
+      }
+      .signal small, .plain small {
+        display: block;
+        font-size: 12px;
+        font-weight: 500;
+        margin-bottom: 8px;
+      }
+      .signal strong, .plain strong {
+        display: block;
+        font-size: 28px;
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        font-weight: 600;
+      }
+      .signal p, .plain p { margin: 10px 0 0; font-size: 14px; }
+      .plain { padding: 24px; border-top: 1px solid var(--line); }
+      .plain strong { color: var(--navy); font-size: 22px; }
+      .doors { margin-top: 72px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+      article {
+        background: var(--white);
+        border-radius: 8px;
+        padding: 24px;
+        box-shadow: rgba(18, 22, 30, 0.05) 0 1px 0, rgba(18, 22, 30, 0.04) 0 0 0 1px;
+      }
+      h2 { margin: 0 0 8px; color: var(--navy); font-size: 28px; letter-spacing: -0.02em; line-height: 1.1; }
+      article p { margin: 0; }
+      .note { margin-top: 72px; color: var(--steel); font-size: 14px; max-width: 62ch; }
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 24px 0 40px;
+        color: var(--steel);
+        font-size: 14px;
+      }
+      @media (max-width: 800px) {
+        .hero, .doors { grid-template-columns: 1fr; }
+        main { padding-top: 40px; }
+        h1 { max-width: none; }
+      }
+    </style>
   </head>
   <body>
-    <a class="skip" href="#main">Skip to content</a>
-    <header id="site-header"><div class="header-pill"><a class="brand" href="#home" aria-label="NakharaX Group home"><span class="brand-wordmark">NAKHARA<span class="gold">X</span><small>GROUP</small></span></a><nav id="primary-nav" aria-label="Main navigation"><a href="#vision" data-nav="vision">01 Our vision</a><a href="#ecosystem" data-nav="ecosystem">02 Ecosystem</a><a href="#intelligence" data-nav="intelligence">03 Intelligence</a><a href="#connect" data-nav="connect">04 Connect</a></nav><a class="nav-cta" href="#connect">Connect</a><button type="button" id="menu-toggle" class="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Toggle navigation menu"><span></span><span></span></button></div></header>
-    <main id="main">
-      <section id="home" class="hero"><div id="universe" role="region" tabindex="0" data-view="orbit" aria-label="Interactive NakharaX 3D Solar System" aria-describedby="scene-help"></div><div class="hero-stage"><h1>Beyond ideas. Into impact.</h1><p class="intro">A connected world of human ambition, engineering, and artificial intelligence.</p><a class="button" href="#ecosystem">Explore our universe</a><button type="button" id="film-open">Watch the vision</button></div><div class="hero-hud"><span id="scene-state">INITIALIZING 3D</span><button type="button" id="motion" aria-pressed="false">Pause motion</button><button type="button" id="reset">Reset view</button><p id="scene-help">Drag to orbit.</p></div></section>
-      <section id="vision" class="vision section"><h2>Not a collection of companies. A constellation of possibilities.</h2></section>
-      <section id="ecosystem" class="ecosystem section"><h2>Different missions. One gravitational core.</h2><button type="button" data-mission="xpfirm">XpFirm</button><button type="button" data-mission="protocol">NakharaX Protocol</button><button type="button" data-mission="hermes">AI Workforce</button><button type="button" id="mission-prev">Previous</button><span id="mission-counter">01 / 03</span><button type="button" id="mission-next">Next</button><article id="mission-card"><p id="mission-tag">01 / TRADER WORKSPACE</p><span id="mission-orbit-badge">ORBIT 01</span><h3 id="mission-title">XpFirm</h3><p id="mission-description">A Trader Risk and Discipline Workspace.</p><p id="mission-th" lang="th">พื้นที่ทำงานเพื่อวินัยและความเสี่ยง</p><p id="mission-detail">Free Core Forever is the product direction.</p><strong id="mission-meta-focus">Risk</strong><strong id="mission-meta-model">Free Core Forever</strong><strong id="mission-meta-gov">Transparent Scope</strong><a id="mission-link" class="dossier-cta" data-product-door="https://xpfirm.com" href="https://xpfirm.com" target="_blank" rel="noopener noreferrer">Open XpFirm</a><small id="mission-note">Live product door</small></article></section>
-      <section id="intelligence" class="intelligence section"><h2>Intelligence is powerful. Direction makes it matter.</h2><button type="button" class="flow-node active" data-stage="intent" aria-selected="true">HUMAN INTENT</button><button type="button" class="flow-node" data-stage="orchestration">HERMES</button><button type="button" class="flow-node" data-stage="workforce">WORKFORCE</button><button type="button" class="flow-node" data-stage="verified">VERIFIED WORK</button><div id="flow-detail-card"><span id="stage-code">STAGE 01</span><span id="stage-boundary">HUMAN</span><h3 id="stage-title">Human Intent</h3><p id="stage-desc">People set the boundary.</p><p id="stage-th" lang="th">มนุษย์กำหนดขอบเขต</p><strong id="stage-human-role">Defines scope</strong><strong id="stage-ai-role">Executes scoped work</strong><strong id="stage-gate">Human sign-off</strong></div><span class="fine">CONCEPTUAL ARCHITECTURE — NOT LIVE TELEMETRY</span></section>
-      <section id="connect" class="connect section"><h2>The future isn't somewhere we go. It's something we build.</h2><p class="connect-th" lang="th">ประตูผลิตภัณฑ์คือ XpFirm งานวิศวกรรมอื่นยังดูได้บน GitHub</p><a class="button" href="https://github.com/nakharax" target="_blank" rel="noopener noreferrer">Connect with NakharaX</a><a class="secondary-button" data-product-door="https://xpfirm.com" href="https://xpfirm.com" target="_blank" rel="noopener noreferrer">Open XpFirm</a><p class="fine">XpFirm has its own door. Other engineering work stays on GitHub.</p></section>
+    <header>
+      <div class="wrap bar">
+        <a class="mark" href="#top">NakharaX Group</a>
+        <nav aria-label="Public doors">
+          <a class="ghost" href="#doors">Two doors</a>
+          <a class="btn" href="https://xpfirm.com">Open XpFirm</a>
+        </nav>
+      </div>
+    </header>
+    <main id="top">
+      <div class="wrap">
+        <section class="hero">
+          <div>
+            <h1>Two public doors. Nothing else to remember.</h1>
+            <p class="lead">This page is the company. XpFirm is the product, and it already has its own address.</p>
+            <p class="thai" lang="th">หน้านี้คือบริษัท XpFirm คือผลิตภัณฑ์ และมีประตูของตัวเองแล้ว</p>
+            <div class="actions">
+              <a class="btn" href="https://xpfirm.com">Open XpFirm</a>
+              <a class="ghost" href="#doors">See both doors</a>
+            </div>
+          </div>
+          <aside class="ledger" aria-label="Public doors">
+            <a href="https://xpfirm.com">
+              <div class="signal">
+                <small>Product door</small>
+                <strong>XpFirm</strong>
+                <p>Risk and discipline workspace. Human in control. Not a promise of returns.</p>
+              </div>
+            </a>
+            <a href="#top">
+              <div class="plain">
+                <small>Company door</small>
+                <strong>NakharaX Group</strong>
+                <p>You are here. This page does not replace the product.</p>
+              </div>
+            </a>
+          </aside>
+        </section>
+        <section class="doors" id="doors">
+          <article>
+            <h2>XpFirm</h2>
+            <p>The live product door is <a href="https://xpfirm.com">xpfirm.com</a>. It is a workspace for preparation and risk awareness, not a trading signal and not a profit claim.</p>
+          </article>
+          <article>
+            <h2>NakharaX</h2>
+            <p>The company door is this page. Other work stays off the public front. A repository is not a second website.</p>
+          </article>
+        </section>
+        <p class="note">No customer counts, prices, or performance figures are shown here. Those are not established on this page.</p>
+      </div>
     </main>
-    <footer><a class="footer-brand" href="#home">NAKHARAX GROUP</a><span>SOLAR SYSTEM EDITION / V4</span><a href="#home">BACK TO TOP</a></footer>
-    <dialog id="film" aria-label="NakharaX Group brand film"><button type="button" id="film-close" aria-label="Close film">Close</button><div data-launch-film></div></dialog>
-    <script type="module" src="app.js"></script>
-    <script type="module" src="launch-film/player.mjs"></script>
+    <footer>
+      <div class="wrap">NakharaX Group · company door · product at xpfirm.com</div>
+    </footer>
   </body>
 </html>
