@@ -9,29 +9,36 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--canvas:#f4f6f5;--card:#fff;--ink:#111a4a;--body:#3b3e47;--muted:#7c7f88;--line:#e3e4e8;--dot:#8fbfb6;--orange:#ec652b;--max:1180px}
+:root{--canvas:#f4f6f5;--ink:#111a4a;--body:#3b3e47;--muted:#7c7f88;--line:#e3e4e8;--orange:#ec652b;--max:1180px}
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--canvas);color:var(--body);font-family:Inter,"Noto Sans Thai",sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-a:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 .wrap{width:min(var(--max),calc(100% - 64px));margin:0 auto}
-header{position:sticky;top:0;z-index:20;height:64px;background:rgba(244,246,245,.9);backdrop-filter:blur(10px);border-bottom:1px solid transparent}
+header{position:sticky;top:0;z-index:20;height:64px;background:rgba(244,246,245,.9);backdrop-filter:blur(10px)}
 .bar{height:64px;display:flex;align-items:center;justify-content:space-between}
 .mark{font-weight:600;font-size:18px;letter-spacing:-.03em;color:var(--ink)}
 nav{display:flex;align-items:center;gap:28px}
 nav a{font-size:14px;color:#2c3340}
-.pill{height:36px;padding:0 14px;border:1px solid #cfd3d6;border-radius:8px;background:#fff;color:var(--ink);font-size:14px;font-weight:500;display:inline-flex;align-items:center}
+.pill{height:36px;padding:0 14px;border:1px solid #cfd3d6;border-radius:8px;background:#fff;color:var(--ink);font-size:14px;font-weight:500;display:inline-flex;align-items:center;cursor:pointer}
+.pill:hover{border-color:var(--ink)}
 .hero{position:relative;min-height:640px;overflow:hidden;padding:72px 0 88px}
-.map{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.map-stage{position:absolute;inset:-4%;pointer-events:none;animation:globe 1.5s cubic-bezier(.16,1,.3,1) both}
+.map{width:100%;height:100%;display:block}
+.dots-a{animation:pulseA 4.8s ease-in-out infinite}
+.dots-b{animation:pulseB 4.8s ease-in-out infinite}
+.route,.route-line{stroke-dasharray:3 10;animation:travel 7s linear infinite}
+.route-line{fill:none;stroke:#7eaea4;stroke-width:2;stroke-linecap:round}
 .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;min-height:520px}
 h1{font-size:clamp(52px,6.2vw,76px);line-height:.98;letter-spacing:-.045em;font-weight:600;color:var(--ink);max-width:9ch}
 .sub{margin-top:22px;max-width:36ch;font-size:18px;line-height:1.45;color:#4a5160}
 .th{margin-top:10px;color:var(--muted);font-size:15px}
 .actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
-.card{background:#fff;border-radius:16px;box-shadow:0 18px 50px rgba(17,26,74,.08),0 1px 0 rgba(17,26,74,.04);padding:22px 22px 18px;max-width:420px;margin-left:auto}
+.card{background:#fff;border-radius:16px;box-shadow:0 18px 50px rgba(17,26,74,.08),0 1px 0 rgba(17,26,74,.04);padding:22px 22px 18px;max-width:420px;margin-left:auto;animation:cardIn .9s .28s cubic-bezier(.16,1,.3,1) both;transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s}
+.card:hover{transform:translateY(-6px);box-shadow:0 28px 60px rgba(17,26,74,.12)}
 .card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
 .live{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--orange);animation:blink 1.6s steps(2) infinite}
 .kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .card h2{font-size:28px;letter-spacing:-.03em;color:var(--ink);margin:4px 0 8px}
 .card p{font-size:14px;color:#4a5160}
@@ -39,14 +46,18 @@ h1{font-size:clamp(52px,6.2vw,76px);line-height:.98;letter-spacing:-.045em;font-
 .row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px}
 .row span{color:var(--muted)}
 .row strong{color:var(--ink);font-weight:600}
+.meter{height:3px;background:#eef0f2;border-radius:99px;margin-top:16px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:var(--ink);animation:fill 2.6s linear infinite}
 .card-link{display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-size:13px;font-weight:600;color:var(--ink)}
+.step{border:0;background:transparent;color:var(--ink);font:inherit;font-weight:600;cursor:pointer;padding:0}
 section{padding:88px 0;border-top:1px solid var(--line)}
 .eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 h3.sec{font-size:clamp(32px,4vw,44px);line-height:1.05;letter-spacing:-.035em;color:var(--ink);font-weight:600;max-width:16ch}
 .lead{margin-top:14px;max-width:52ch;color:#4a5160}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
-.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;min-height:180px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;min-height:180px;transition:transform .35s cubic-bezier(.16,1,.3,1)}
+.panel:hover{transform:translateY(-4px)}
 .panel .n{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
 .panel h4{margin:10px 0 8px;font-size:20px;letter-spacing:-.02em;color:var(--ink)}
 .panel p{font-size:14px}
@@ -54,6 +65,13 @@ h3.sec{font-size:clamp(32px,4vw,44px);line-height:1.05;letter-spacing:-.035em;co
 .band{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px;display:flex;justify-content:space-between;gap:20px;align-items:center}
 .band b{color:var(--ink);font-size:13px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
 footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:16px}
+@keyframes globe{from{transform:scale(1.14);opacity:0}to{transform:none;opacity:1}}
+@keyframes pulseA{0%,100%{opacity:.35}50%{opacity:1}}
+@keyframes pulseB{0%,100%{opacity:.85}50%{opacity:.2}}
+@keyframes travel{to{stroke-dashoffset:-156}}
+@keyframes cardIn{from{opacity:0;transform:translateY(22px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes blink{50%{opacity:.2}}
+@keyframes fill{from{width:0}to{width:100%}}
 @media(max-width:900px){
   .wrap{width:calc(100% - 32px)}
   .hero-grid,.grid3,.grid4{grid-template-columns:1fr}
@@ -61,6 +79,10 @@ footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);f
   nav a:not(.pill){display:none}
   h1{font-size:46px}
   .band,footer{flex-direction:column;align-items:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+  .map-stage,.dots-a,.dots-b,.route,.route-line,.card,.dot,.meter i,.panel{animation:none;transition:none}
+  .meter i{width:40%}
 }
 </style>
 </head>
@@ -77,40 +99,36 @@ footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);f
   </div>
 </header>
 <main id="home">
-  <div class="hero">
-    <svg class="map" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <defs>
-        <pattern id="d" width="13" height="13" patternUnits="userSpaceOnUse">
-          <circle cx="1.3" cy="1.3" r="1.15" fill="#8fbfb6"/>
-        </pattern>
-        <mask id="m">
-          <rect width="1440" height="720" fill="black"/>
-          <g fill="white">
-            <ellipse cx="250" cy="230" rx="70" ry="46"/>
-            <ellipse cx="300" cy="300" rx="54" ry="78"/>
-            <ellipse cx="430" cy="250" rx="28" ry="22"/>
-            <ellipse cx="690" cy="210" rx="46" ry="34"/>
-            <ellipse cx="760" cy="250" rx="70" ry="42"/>
-            <ellipse cx="820" cy="300" rx="36" ry="58"/>
-            <ellipse cx="980" cy="230" rx="120" ry="62"/>
-            <ellipse cx="1120" cy="250" rx="70" ry="40"/>
-            <ellipse cx="1040" cy="340" rx="48" ry="36"/>
-            <ellipse cx="1180" cy="430" rx="42" ry="28"/>
-            <ellipse cx="330" cy="470" rx="34" ry="52"/>
-            <ellipse cx="860" cy="470" rx="28" ry="22"/>
-          </g>
-          <path d="M180 250 C 420 180, 760 160, 1260 230" fill="none" stroke="white" stroke-width="8" stroke-dasharray="2 11" stroke-linecap="round"/>
-        </mask>
-        <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="white" stop-opacity=".15"/>
-          <stop offset=".42" stop-color="white" stop-opacity=".55"/>
-          <stop offset="1" stop-color="white" stop-opacity="1"/>
-        </linearGradient>
-        <mask id="fadeMask"><rect width="1440" height="720" fill="url(#fade)"/></mask>
-      </defs>
-      <rect width="1440" height="720" fill="url(#d)" mask="url(#m)" opacity=".9"/>
-      <rect width="1440" height="720" fill="url(#d)" mask="url(#fadeMask)" opacity=".28"/>
-    </svg>
+  <div class="hero" id="hero">
+    <div class="map-stage" id="stage">
+      <svg class="map" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <pattern id="d" width="13" height="13" patternUnits="userSpaceOnUse"><circle cx="1.3" cy="1.3" r="1.15" fill="#8fbfb6"/></pattern>
+          <mask id="m">
+            <rect width="1440" height="720" fill="black"/>
+            <g fill="white">
+              <ellipse cx="250" cy="230" rx="70" ry="46"/><ellipse cx="300" cy="300" rx="54" ry="78"/>
+              <ellipse cx="430" cy="250" rx="28" ry="22"/><ellipse cx="690" cy="210" rx="46" ry="34"/>
+              <ellipse cx="760" cy="250" rx="70" ry="42"/><ellipse cx="820" cy="300" rx="36" ry="58"/>
+              <ellipse cx="980" cy="230" rx="120" ry="62"/><ellipse cx="1120" cy="250" rx="70" ry="40"/>
+              <ellipse cx="1040" cy="340" rx="48" ry="36"/><ellipse cx="1180" cy="430" rx="42" ry="28"/>
+              <ellipse cx="330" cy="470" rx="34" ry="52"/><ellipse cx="860" cy="470" rx="28" ry="22"/>
+            </g>
+            <path class="route" d="M180 250 C 420 180, 760 160, 1260 230" fill="none" stroke="white" stroke-width="10" stroke-linecap="round"/>
+          </mask>
+          <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="white" stop-opacity=".15"/>
+            <stop offset=".42" stop-color="white" stop-opacity=".55"/>
+            <stop offset="1" stop-color="white"/>
+          </linearGradient>
+          <mask id="fadeMask"><rect width="1440" height="720" fill="url(#fade)"/></mask>
+        </defs>
+        <rect class="dots-a" width="1440" height="720" fill="url(#d)" mask="url(#m)"/>
+        <rect class="dots-b" width="1440" height="720" fill="url(#d)" mask="url(#fadeMask)" opacity=".35"/>
+        <path class="route-line" d="M180 250 C 420 180, 760 160, 1260 230"/>
+        <circle r="5" fill="#111a4a"><animateMotion dur="9s" repeatCount="indefinite" path="M180 250 C 420 180, 760 160, 1260 230"/></circle>
+      </svg>
+    </div>
     <div class="wrap hero-grid">
       <div>
         <h1>Beyond ideas. Into impact.</h1>
@@ -121,24 +139,24 @@ footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);f
           <a class="pill" href="#ecosystem">Explore the orbit</a>
         </div>
       </div>
-      <aside class="card" aria-label="XpFirm product door">
+      <aside class="card" id="desk" aria-label="XpFirm product door">
         <div class="card-top">
           <span class="kicker">Trader workspace</span>
-          <span class="live"><i class="dot"></i> Door</span>
+          <span class="live"><i class="dot"></i><span id="phase">Moving</span></span>
         </div>
         <h2>XpFirm</h2>
         <p>A trader risk and discipline workspace. Preparation, risk awareness, and consistent decisions — not a promise of returns.</p>
         <div class="rows">
+          <div class="row"><span>Now</span><strong id="now">Session open</strong></div>
           <div class="row"><span>Model</span><strong>Free Core Forever</strong></div>
           <div class="row"><span>Scope</span><strong>Transparent scope</strong></div>
-          <div class="row"><span>Returns</span><strong>Not promised</strong></div>
         </div>
+        <div class="meter" aria-hidden="true"><i id="meter"></i></div>
         <p class="th" lang="th">พื้นที่ทำงานเพื่อการบริหารความเสี่ยงและวินัย ไม่ใช่การสัญญาผลตอบแทน</p>
-        <div class="card-link"><span>xpfirm.com</span><a class="pill" href="https://xpfirm.com">Open</a></div>
+        <div class="card-link"><span>xpfirm.com</span><button class="step" id="step" type="button">Step</button></div>
       </aside>
     </div>
   </div>
-
   <section id="vision">
     <div class="wrap">
       <p class="eyebrow">Independent minds. One shared orbit.</p>
@@ -151,7 +169,6 @@ footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);f
       </div>
     </div>
   </section>
-
   <section id="ecosystem">
     <div class="wrap">
       <p class="eyebrow">Different missions. One gravitational core.</p>
@@ -163,7 +180,6 @@ footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);f
       </div>
     </div>
   </section>
-
   <section id="intelligence">
     <div class="wrap">
       <p class="eyebrow">Human direction. Machine leverage.</p>
@@ -177,7 +193,6 @@ footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);f
       <div class="band"><span>Hermes coordinates specialists under human direction. No customer trading authority.</span><b>Not live telemetry</b></div>
     </div>
   </section>
-
   <section id="close">
     <div class="wrap">
       <p class="eyebrow">One shared orbit</p>
@@ -191,5 +206,43 @@ footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);f
   <span>nakharax · independent minds, one shared orbit</span>
   <a href="https://xpfirm.com">xpfirm.com</a>
 </footer>
+<script>
+(function () {
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var hero = document.getElementById("hero");
+  var stage = document.getElementById("stage");
+  var now = document.getElementById("now");
+  var phase = document.getElementById("phase");
+  var meter = document.getElementById("meter");
+  var step = document.getElementById("step");
+  var states = [
+    ["Session open", "Prepare"],
+    ["Risk noted", "Hold"],
+    ["Decision held", "Human"]
+  ];
+  var i = 0;
+  function show(n) {
+    i = n % states.length;
+    now.textContent = states[i][0];
+    phase.textContent = states[i][1];
+    if (!reduced) {
+      meter.style.animation = "none";
+      void meter.offsetWidth;
+      meter.style.animation = "";
+    }
+  }
+  if (!reduced) {
+    hero.addEventListener("pointermove", function (e) {
+      var r = hero.getBoundingClientRect();
+      var x = (e.clientX - r.left) / r.width - 0.5;
+      var y = (e.clientY - r.top) / r.height - 0.5;
+      stage.style.transform = "translate(" + (x * -22) + "px," + (y * -14) + "px)";
+    });
+    hero.addEventListener("pointerleave", function () { stage.style.transform = ""; });
+    setInterval(function () { show(i + 1); }, 2600);
+  }
+  step.addEventListener("click", function () { show(i + 1); });
+})();
+</script>
 </body>
 </html>
