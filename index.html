@@ -9,239 +9,330 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--canvas:#f4f6f5;--ink:#111a4a;--body:#3b3e47;--muted:#7c7f88;--line:#e3e4e8;--orange:#ec652b;--max:1180px}
+:root{--ink:#111a4a;--body:#3b3e47;--muted:#7c7f88;--line:#e3e4e8;--canvas:#f7f8f6;--max:1120px}
 *{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--canvas);color:var(--body);font-family:Inter,"Noto Sans Thai",sans-serif;font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+body{background:var(--canvas);color:var(--body);font-family:Inter,"Noto Sans Thai",sans-serif;font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 a:focus-visible,button:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
-.wrap{width:min(var(--max),calc(100% - 64px));margin:0 auto}
-header{position:sticky;top:0;z-index:20;height:64px;background:rgba(244,246,245,.9);backdrop-filter:blur(10px)}
-.bar{height:64px;display:flex;align-items:center;justify-content:space-between}
-.mark{font-weight:600;font-size:18px;letter-spacing:-.03em;color:var(--ink)}
+.top{height:36px;background:#1d4e89;color:#fff;display:flex;align-items:center;justify-content:center;gap:10px;font-size:13px}
+.top a{font-weight:600}
+header{height:72px;display:flex;align-items:center}
+.bar{width:min(1240px,calc(100% - 64px));margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.mark{font-size:22px;font-weight:600;letter-spacing:-.04em;color:#1a1a1a}
 nav{display:flex;align-items:center;gap:28px}
-nav a{font-size:14px;color:#2c3340}
-.pill{height:36px;padding:0 14px;border:1px solid #cfd3d6;border-radius:8px;background:#fff;color:var(--ink);font-size:14px;font-weight:500;display:inline-flex;align-items:center;cursor:pointer}
-.pill:hover{border-color:var(--ink)}
-.hero{position:relative;min-height:640px;overflow:hidden;padding:72px 0 88px}
-.map-stage{position:absolute;inset:-4%;pointer-events:none;animation:globe 1.5s cubic-bezier(.16,1,.3,1) both}
-.map{width:100%;height:100%;display:block}
-.dots-a{animation:pulseA 4.8s ease-in-out infinite}
-.dots-b{animation:pulseB 4.8s ease-in-out infinite}
-.route,.route-line{stroke-dasharray:3 10;animation:travel 7s linear infinite}
-.route-line{fill:none;stroke:#7eaea4;stroke-width:2;stroke-linecap:round}
-.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;min-height:520px}
-h1{font-size:clamp(52px,6.2vw,76px);line-height:.98;letter-spacing:-.045em;font-weight:600;color:var(--ink);max-width:9ch}
-.sub{margin-top:22px;max-width:36ch;font-size:18px;line-height:1.45;color:#4a5160}
-.th{margin-top:10px;color:var(--muted);font-size:15px}
-.actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
-.card{background:#fff;border-radius:16px;box-shadow:0 18px 50px rgba(17,26,74,.08),0 1px 0 rgba(17,26,74,.04);padding:22px 22px 18px;max-width:420px;margin-left:auto;animation:cardIn .9s .28s cubic-bezier(.16,1,.3,1) both;transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s}
-.card:hover{transform:translateY(-6px);box-shadow:0 28px 60px rgba(17,26,74,.12)}
-.card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.live{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--orange);animation:blink 1.6s steps(2) infinite}
-.kicker{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
-.card h2{font-size:28px;letter-spacing:-.03em;color:var(--ink);margin:4px 0 8px}
-.card p{font-size:14px;color:#4a5160}
-.rows{margin-top:18px;border-top:1px solid var(--line)}
-.row{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:13px}
+nav a{font-size:15px;color:#2a2a2a}
+.ghost{height:36px;padding:0 14px;border:1px solid #d5d7db;border-radius:8px;background:#fff;font-weight:500}
+.ghost:hover{border-color:#1a1a1a}
+.hero{position:relative;height:min(760px,92vh);min-height:620px;overflow:hidden}
+#map{position:absolute;inset:0;width:100%;height:100%;display:block}
+.scene{position:relative;z-index:1;height:100%;width:min(1240px,calc(100% - 64px));margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;align-items:end;padding:0 0 92px;pointer-events:none}
+.scene *{pointer-events:auto}
+h1{font-size:clamp(56px,6.4vw,84px);line-height:.96;letter-spacing:-.045em;font-weight:600;color:var(--ink);max-width:8.2ch}
+.sub{margin-top:18px;max-width:34ch;font-size:18px;color:#3c4250}
+.th{margin-top:8px;color:var(--muted);font-size:15px}
+.card{width:min(420px,100%);margin-left:auto;background:#fff;border-radius:16px;box-shadow:0 24px 70px rgba(17,26,74,.12);padding:18px 18px 16px;transform:translateY(16px);animation:rise .7s .25s cubic-bezier(.16,1,.3,1) both}
+.card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.k{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.live{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--ink)}
+.pulse{width:8px;height:8px;border-radius:50%;background:#ec652b;box-shadow:0 0 0 0 rgba(236,101,43,.6);animation:ping 1.8s infinite}
+.typed{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:#243056;min-height:22px;background:#f4f7f8;border-radius:8px;padding:8px 10px}
+.caret{display:inline-block;width:7px;height:14px;background:#111a4a;margin-left:2px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+.feed{margin-top:12px;height:132px;overflow:hidden;position:relative;border-top:1px solid var(--line)}
+.feed:before,.feed:after{content:"";position:absolute;left:0;right:0;height:18px;z-index:1;pointer-events:none}
+.feed:before{top:0;background:linear-gradient(#fff,transparent)}
+.feed:after{bottom:0;background:linear-gradient(transparent,#fff)}
+.rail{animation:scroll 14s linear infinite}
+.row{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid #eef0f2;font-size:13px}
+.row b{color:var(--ink);font-weight:600}
 .row span{color:var(--muted)}
-.row strong{color:var(--ink);font-weight:600}
-.meter{height:3px;background:#eef0f2;border-radius:99px;margin-top:16px;overflow:hidden}
-.meter i{display:block;height:100%;width:0;background:var(--ink);animation:fill 2.6s linear infinite}
-.card-link{display:flex;justify-content:space-between;align-items:center;margin-top:16px;font-size:13px;font-weight:600;color:var(--ink)}
-.step{border:0;background:transparent;color:var(--ink);font:inherit;font-weight:600;cursor:pointer;padding:0}
-section{padding:88px 0;border-top:1px solid var(--line)}
-.eyebrow{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-h3.sec{font-size:clamp(32px,4vw,44px);line-height:1.05;letter-spacing:-.035em;color:var(--ink);font-weight:600;max-width:16ch}
-.lead{margin-top:14px;max-width:52ch;color:#4a5160}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:36px}
-.panel{background:#fff;border:1px solid var(--line);border-radius:12px;padding:22px;min-height:180px;transition:transform .35s cubic-bezier(.16,1,.3,1)}
-.panel:hover{transform:translateY(-4px)}
-.panel .n{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.panel h4{margin:10px 0 8px;font-size:20px;letter-spacing:-.02em;color:var(--ink)}
-.panel p{font-size:14px}
-.note{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
-.band{margin-top:28px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px 22px;display:flex;justify-content:space-between;gap:20px;align-items:center}
-.band b{color:var(--ink);font-size:13px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
-footer{padding:28px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:13px;display:flex;justify-content:space-between;gap:16px}
-@keyframes globe{from{transform:scale(1.14);opacity:0}to{transform:none;opacity:1}}
-@keyframes pulseA{0%,100%{opacity:.35}50%{opacity:1}}
-@keyframes pulseB{0%,100%{opacity:.85}50%{opacity:.2}}
-@keyframes travel{to{stroke-dashoffset:-156}}
-@keyframes cardIn{from{opacity:0;transform:translateY(22px) scale(.98)}to{opacity:1;transform:none}}
-@keyframes blink{50%{opacity:.2}}
-@keyframes fill{from{width:0}to{width:100%}}
+.tabs{display:flex;gap:8px;margin-top:14px}
+.tabs button{border:1px solid var(--line);background:#fff;border-radius:999px;height:30px;padding:0 12px;font:inherit;font-size:12px;font-weight:600;color:var(--ink);cursor:pointer}
+.tabs button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.chart-sec{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center;width:min(1240px,calc(100% - 64px));margin:0 auto;padding:96px 0 40px;min-height:520px}
+.chart-sec h2{font-size:clamp(36px,4vw,52px);line-height:1.05;letter-spacing:-.04em;color:var(--ink);font-weight:600;max-width:16ch}
+#chart{width:100%;height:420px;display:block}
+.switch{width:min(1240px,calc(100% - 64px));margin:0 auto;padding:40px 0 96px;display:grid;grid-template-columns:280px 1fr;gap:28px}
+.switch button{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:16px 0;font:inherit;font-size:18px;color:var(--muted);cursor:pointer}
+.switch button.on{color:var(--ink);font-weight:600}
+.face{background:#fff;border:1px solid var(--line);border-radius:16px;min-height:240px;padding:28px;box-shadow:0 10px 30px rgba(17,26,74,.04)}
+.face h3{font-size:28px;letter-spacing:-.03em;color:var(--ink);margin-bottom:10px}
+.face p{max-width:52ch}
+.face a{display:inline-flex;margin-top:18px}
+footer{border-top:1px solid var(--line);padding:28px 0 40px}
+.foot{width:min(1240px,calc(100% - 64px));margin:0 auto;display:flex;justify-content:space-between;color:var(--muted);font-size:13px}
+@keyframes rise{to{transform:none}}
+@keyframes ping{70%{box-shadow:0 0 0 8px rgba(236,101,43,0)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes scroll{from{transform:translateY(0)}to{transform:translateY(-50%)}}
 @media(max-width:900px){
-  .wrap{width:calc(100% - 32px)}
-  .hero-grid,.grid3,.grid4{grid-template-columns:1fr}
-  .card{margin:8px 0 0}
-  nav a:not(.pill){display:none}
+  .bar,.scene,.chart-sec,.switch,.foot{width:calc(100% - 32px)}
+  .scene,.chart-sec,.switch{grid-template-columns:1fr}
+  nav a:not(.ghost){display:none}
   h1{font-size:46px}
-  .band,footer{flex-direction:column;align-items:flex-start}
+  .hero{height:auto;min-height:0;padding-bottom:28px}
+  .scene{padding:220px 0 24px}
+  .card{margin:24px 0 0}
 }
 @media(prefers-reduced-motion:reduce){
-  .map-stage,.dots-a,.dots-b,.route,.route-line,.card,.dot,.meter i,.panel{animation:none;transition:none}
-  .meter i{width:40%}
+  .card,.pulse,.caret,.rail{animation:none}
+  .rail{transform:none}
 }
 </style>
 </head>
 <body>
+<div class="top"><span>Product door is open.</span><a href="https://xpfirm.com">Open XpFirm</a></div>
 <header>
-  <div class="wrap bar">
+  <div class="bar">
     <a class="mark" href="#home">nakharax</a>
     <nav>
-      <a href="#vision">Vision</a>
-      <a href="#ecosystem">Ecosystem</a>
-      <a href="#intelligence">Intelligence</a>
-      <a class="pill" href="https://xpfirm.com">Open XpFirm</a>
+      <a href="#orbit">Orbit</a>
+      <a href="#missions">Missions</a>
+      <a class="ghost" href="https://xpfirm.com">Open XpFirm</a>
     </nav>
   </div>
 </header>
 <main id="home">
-  <div class="hero" id="hero">
-    <div class="map-stage" id="stage">
-      <svg class="map" viewBox="0 0 1440 720" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <defs>
-          <pattern id="d" width="13" height="13" patternUnits="userSpaceOnUse"><circle cx="1.3" cy="1.3" r="1.15" fill="#8fbfb6"/></pattern>
-          <mask id="m">
-            <rect width="1440" height="720" fill="black"/>
-            <g fill="white">
-              <ellipse cx="250" cy="230" rx="70" ry="46"/><ellipse cx="300" cy="300" rx="54" ry="78"/>
-              <ellipse cx="430" cy="250" rx="28" ry="22"/><ellipse cx="690" cy="210" rx="46" ry="34"/>
-              <ellipse cx="760" cy="250" rx="70" ry="42"/><ellipse cx="820" cy="300" rx="36" ry="58"/>
-              <ellipse cx="980" cy="230" rx="120" ry="62"/><ellipse cx="1120" cy="250" rx="70" ry="40"/>
-              <ellipse cx="1040" cy="340" rx="48" ry="36"/><ellipse cx="1180" cy="430" rx="42" ry="28"/>
-              <ellipse cx="330" cy="470" rx="34" ry="52"/><ellipse cx="860" cy="470" rx="28" ry="22"/>
-            </g>
-            <path class="route" d="M180 250 C 420 180, 760 160, 1260 230" fill="none" stroke="white" stroke-width="10" stroke-linecap="round"/>
-          </mask>
-          <linearGradient id="fade" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="white" stop-opacity=".15"/>
-            <stop offset=".42" stop-color="white" stop-opacity=".55"/>
-            <stop offset="1" stop-color="white"/>
-          </linearGradient>
-          <mask id="fadeMask"><rect width="1440" height="720" fill="url(#fade)"/></mask>
-        </defs>
-        <rect class="dots-a" width="1440" height="720" fill="url(#d)" mask="url(#m)"/>
-        <rect class="dots-b" width="1440" height="720" fill="url(#d)" mask="url(#fadeMask)" opacity=".35"/>
-        <path class="route-line" d="M180 250 C 420 180, 760 160, 1260 230"/>
-        <circle r="5" fill="#111a4a"><animateMotion dur="9s" repeatCount="indefinite" path="M180 250 C 420 180, 760 160, 1260 230"/></circle>
-      </svg>
-    </div>
-    <div class="wrap hero-grid">
+  <section class="hero" id="hero">
+    <canvas id="map" aria-hidden="true"></canvas>
+    <div class="scene">
       <div>
         <h1>Beyond ideas. Into impact.</h1>
         <p class="sub">A connected world of human ambition, engineering, and artificial intelligence.</p>
         <p class="th" lang="th">ก้าวข้ามขีดจำกัดความคิด สู่ผลลัพธ์ที่มีความหมาย</p>
-        <div class="actions">
-          <a class="pill" href="https://xpfirm.com">Open XpFirm</a>
-          <a class="pill" href="#ecosystem">Explore the orbit</a>
-        </div>
       </div>
-      <aside class="card" id="desk" aria-label="XpFirm product door">
-        <div class="card-top">
-          <span class="kicker">Trader workspace</span>
-          <span class="live"><i class="dot"></i><span id="phase">Moving</span></span>
-        </div>
-        <h2>XpFirm</h2>
-        <p>A trader risk and discipline workspace. Preparation, risk awareness, and consistent decisions — not a promise of returns.</p>
-        <div class="rows">
-          <div class="row"><span>Now</span><strong id="now">Session open</strong></div>
-          <div class="row"><span>Model</span><strong>Free Core Forever</strong></div>
-          <div class="row"><span>Scope</span><strong>Transparent scope</strong></div>
-        </div>
-        <div class="meter" aria-hidden="true"><i id="meter"></i></div>
-        <p class="th" lang="th">พื้นที่ทำงานเพื่อการบริหารความเสี่ยงและวินัย ไม่ใช่การสัญญาผลตอบแทน</p>
-        <div class="card-link"><span>xpfirm.com</span><button class="step" id="step" type="button">Step</button></div>
+      <aside class="card" aria-label="XpFirm workspace">
+        <div class="card-top"><span class="k">Trader workspace</span><span class="live"><i class="pulse"></i><span id="phase">Live</span></span></div>
+        <div class="typed" id="typed"></div>
+        <div class="feed" id="feed"><div class="rail" id="rail"></div></div>
+        <div class="tabs" id="tabs"></div>
       </aside>
     </div>
-  </div>
-  <section id="vision">
-    <div class="wrap">
-      <p class="eyebrow">Independent minds. One shared orbit.</p>
-      <h3 class="sec">Not a collection of companies. A constellation of possibilities.</h3>
-      <p class="lead" lang="th">ไม่ใช่เพียงกลุ่มบริษัท แต่คือกลุ่มดาวแห่งความเป็นไปได้</p>
-      <div class="grid3">
-        <article class="panel"><div class="n">01</div><h4>Clarity</h4><p>Every venture begins with an explicit problem boundary and a transparent scope.</p><p class="note" lang="th">ความชัดเจนในเป้าหมายและขอบเขตการทำงาน</p></article>
-        <article class="panel"><div class="n">02</div><h4>Discipline</h4><p>Built around preparation, risk awareness, and repeatable decisions.</p><p class="note" lang="th">วินัยเชิงระบบและการตระหนักรู้ความเสี่ยง</p></article>
-        <article class="panel"><div class="n">03</div><h4>Purpose</h4><p>Machine intelligence speeds the work. Human judgment keeps the direction.</p><p class="note" lang="th">เทคโนโลยีที่ขับเคลื่อนด้วยความรับผิดชอบของมนุษย์</p></article>
-      </div>
-    </div>
   </section>
-  <section id="ecosystem">
-    <div class="wrap">
-      <p class="eyebrow">Different missions. One gravitational core.</p>
-      <h3 class="sec">Different missions. One gravitational core.</h3>
-      <div class="grid3">
-        <article class="panel"><div class="n">Product door</div><h4>XpFirm</h4><p>Designed around preparation, risk awareness, and consistent decision-making — not the promise of returns.</p><p class="note">Free Core Forever. Transparent scope.</p><p class="note"><a href="https://xpfirm.com">Open XpFirm</a></p></article>
-        <article class="panel"><div class="n">Separate orbit</div><h4>NakharaX Protocol</h4><p>A separate initiative, distinct from XpFirm, with its own identity and path. Public destination is not confirmed.</p></article>
-        <article class="panel"><div class="n">Internal</div><h4>Hermes</h4><p>Hermes coordinates specialists under human direction. No customer trading authority. Conceptual architecture, not live telemetry.</p></article>
-      </div>
+  <section class="chart-sec" id="orbit">
+    <div>
+      <h2>Different missions. One gravitational core.</h2>
+      <p class="sub">Independent minds. One shared orbit. Not a collection of companies. A constellation of possibilities. The future isn't somewhere we go. It's something we build.</p>
+      <p class="th" lang="th">ไม่ใช่เพียงกลุ่มบริษัท แต่คือกลุ่มดาวแห่งความเป็นไปได้</p>
     </div>
+    <canvas id="chart" aria-hidden="true"></canvas>
   </section>
-  <section id="intelligence">
-    <div class="wrap">
-      <p class="eyebrow">Human direction. Machine leverage.</p>
-      <h3 class="sec">Intelligence is powerful. Direction makes it matter.</h3>
-      <div class="grid4">
-        <article class="panel"><div class="n">01</div><h4>Human intent</h4><p>People set the objective, the scope, and the risk limit.</p></article>
-        <article class="panel"><div class="n">02</div><h4>Hermes</h4><p>Approved work stays inside an explicit boundary.</p></article>
-        <article class="panel"><div class="n">03</div><h4>Specialists</h4><p>Agents do the assigned work. They do not trade for a customer.</p></article>
-        <article class="panel"><div class="n">04</div><h4>Verified work</h4><p>A person signs the result before it is accepted.</p></article>
-      </div>
-      <div class="band"><span>Hermes coordinates specialists under human direction. No customer trading authority.</span><b>Not live telemetry</b></div>
-    </div>
-  </section>
-  <section id="close">
-    <div class="wrap">
-      <p class="eyebrow">One shared orbit</p>
-      <h3 class="sec">The future isn't somewhere we go. It's something we build.</h3>
-      <p class="lead">A connected world of human ambition, engineering, and artificial intelligence.</p>
-      <div class="actions"><a class="pill" href="https://xpfirm.com">Open XpFirm</a></div>
-    </div>
+  <section class="switch" id="missions">
+    <div id="mission-nav"></div>
+    <article class="face" id="face"></article>
   </section>
 </main>
-<footer class="wrap">
-  <span>nakharax · independent minds, one shared orbit</span>
-  <a href="https://xpfirm.com">xpfirm.com</a>
-</footer>
+<footer><div class="foot"><span>nakharax · independent minds, one shared orbit</span><a href="https://xpfirm.com">xpfirm.com</a></div></footer>
 <script>
 (function () {
-  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var hero = document.getElementById("hero");
-  var stage = document.getElementById("stage");
-  var now = document.getElementById("now");
-  var phase = document.getElementById("phase");
-  var meter = document.getElementById("meter");
-  var step = document.getElementById("step");
-  var states = [
-    ["Session open", "Prepare"],
-    ["Risk noted", "Hold"],
-    ["Decision held", "Human"]
+  var reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var lands = [
+    [[-168,71],[-141,70],[-128,71],[-105,73],[-86,72],[-64,66],[-56,54],[-64,47],[-80,43],[-70,32],[-81,25],[-90,29],[-97,26],[-112,23],[-115,32],[-124,32],[-124,49],[-140,60],[-166,64]],
+    [[-81,12],[-70,12],[-51,2],[-35,-6],[-38,-22],[-52,-28],[-68,-42],[-73,-52],[-76,-46],[-78,-18],[-70,-4],[-80,8]],
+    [[-9,36],[2,43],[-8,52],[-6,59],[5,62],[8,70],[24,71],[28,62],[20,42],[12,38],[3,36]],
+    [[-17,15],[-6,35],[10,37],[32,31],[43,12],[42,-2],[35,-28],[18,-35],[12,-18],[-8,6],[-16,12]],
+    [[28,36],[44,42],[48,60],[60,68],[78,72],[104,76],[140,71],[168,66],[146,52],[128,34],[122,24],[109,8],[98,1],[80,6],[68,22],[60,25],[44,12],[36,28]],
+    [[113,-22],[128,-13],[142,-11],[153,-25],[150,-38],[136,-35],[115,-34],[113,-26]],
+    [[-62,83],[-42,83],[-22,80],[-44,70],[-58,68],[-68,76]],
+    [[-16,64],[-14,66],[-22,66],[-24,64]]
   ];
-  var i = 0;
-  function show(n) {
-    i = n % states.length;
-    now.textContent = states[i][0];
-    phase.textContent = states[i][1];
-    if (!reduced) {
-      meter.style.animation = "none";
-      void meter.offsetWidth;
-      meter.style.animation = "";
+  function pin(poly, x, y) {
+    var c = false, j = poly.length - 1;
+    for (var i = 0; i < poly.length; i++) {
+      var xi = poly[i][0], yi = poly[i][1], xj = poly[j][0], yj = poly[j][1];
+      if ((yi > y) !== (yj > y) && x < (xj - xi) * (y - yi) / (yj - yi) + xi) c = !c;
+      j = i;
+    }
+    return c;
+  }
+  function project(lon, lat, w, h) {
+    return [(lon + 180) / 360 * w, (78 - lat) / 132 * h];
+  }
+  var map = document.getElementById("map");
+  var ctx = map.getContext("2d");
+  var dots = [];
+  var route = [];
+  var pointer = {x: -999, y: -999, on: false};
+  function build() {
+    var dpr = Math.min(devicePixelRatio || 1, 2);
+    map.width = map.clientWidth * dpr;
+    map.height = map.clientHeight * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var w = map.clientWidth, h = map.clientHeight;
+    dots = [];
+    var polys = lands.map(function (poly) { return poly.map(function (p) { return project(p[0], p[1], w, h); }); });
+    var step = w > 800 ? 8 : 11;
+    for (var y = 8; y < h; y += step) {
+      for (var x = 8; x < w; x += step) {
+        for (var p = 0; p < polys.length; p++) {
+          if (pin(polys[p], x, y)) { dots.push([x, y, x / w]); break; }
+        }
+      }
+    }
+    route = [];
+    var a = project(-74, 40, w, h), b = project(-30, 48, w, h), c = project(2, 51, w, h);
+    for (var t = 0; t <= 1; t += 0.02) {
+      var u = 1 - t;
+      route.push([u*u*a[0] + 2*u*t*b[0] + t*t*c[0], u*u*a[1] + 2*u*t*b[1] + t*t*c[1]]);
     }
   }
-  if (!reduced) {
-    hero.addEventListener("pointermove", function (e) {
-      var r = hero.getBoundingClientRect();
-      var x = (e.clientX - r.left) / r.width - 0.5;
-      var y = (e.clientY - r.top) / r.height - 0.5;
-      stage.style.transform = "translate(" + (x * -22) + "px," + (y * -14) + "px)";
-    });
-    hero.addEventListener("pointerleave", function () { stage.style.transform = ""; });
-    setInterval(function () { show(i + 1); }, 2600);
+  function draw(now) {
+    var w = map.clientWidth, h = map.clientHeight;
+    ctx.clearRect(0, 0, w, h);
+    var shift = pointer.on ? (pointer.x / w - 0.5) * -16 : 0;
+    ctx.save();
+    ctx.translate(shift, pointer.on ? (pointer.y / h - 0.5) * -10 : 0);
+    for (var i = 0; i < dots.length; i++) {
+      var d = dots[i];
+      var near = pointer.on ? Math.hypot(d[0] - pointer.x, d[1] - pointer.y) : 999;
+      var breathe = reduced ? 0.75 : 0.55 + Math.sin(now / 700 + d[0] * 0.02) * 0.25;
+      var hot = near < 90 ? 1 : breathe;
+      var r = Math.round(55 + d[2] * 20), g = Math.round(168 - d[2] * 48), b = Math.round(146 + d[2] * 48);
+      ctx.fillStyle = "rgba(" + r + "," + g + "," + b + "," + (near < 90 ? 1 : hot) + ")";
+      ctx.beginPath();
+      ctx.arc(d[0], d[1], near < 90 ? 2.6 : 1.7, 0, 6.3);
+      ctx.fill();
+    }
+    ctx.strokeStyle = "#1d4e89";
+    ctx.lineWidth = 2.2;
+    ctx.setLineDash([2, 8]);
+    ctx.lineDashOffset = reduced ? 0 : -((now / 30) % 80);
+    ctx.beginPath();
+    route.forEach(function (p, idx) { idx ? ctx.lineTo(p[0], p[1]) : ctx.moveTo(p[0], p[1]); });
+    ctx.stroke();
+    var travel = reduced ? route[route.length - 1] : route[Math.floor((now / 40) % route.length)];
+    ctx.setLineDash([]);
+    ctx.fillStyle = "#111a4a";
+    ctx.beginPath();
+    ctx.arc(travel[0], travel[1], 4.5, 0, 6.3);
+    ctx.fill();
+    ctx.restore();
+    if (!reduced) requestAnimationFrame(draw);
   }
-  step.addEventListener("click", function () { show(i + 1); });
+  var hero = document.getElementById("hero");
+  hero.addEventListener("pointermove", function (e) {
+    var r = map.getBoundingClientRect();
+    pointer.x = e.clientX - r.left;
+    pointer.y = e.clientY - r.top;
+    pointer.on = true;
+  });
+  hero.addEventListener("pointerleave", function () { pointer.on = false; });
+  build();
+  addEventListener("resize", build);
+  requestAnimationFrame(draw);
+
+  var states = [
+    ["Prepare", "Session open. Scope is visible before the next decision."],
+    ["Hold", "Risk noted. The limit stays in view."],
+    ["Human", "Decision held. A person remains accountable."]
+  ];
+  var events = ["Scope checked", "Risk noted", "Decision held", "No return promised", "Human signed", "Free Core stays open"];
+  var rail = document.getElementById("rail");
+  events.concat(events).forEach(function (name, idx) {
+    var row = document.createElement("div");
+    row.className = "row";
+    var strong = document.createElement("b");
+    strong.textContent = name;
+    var mark = document.createElement("span");
+    mark.textContent = "0" + ((idx % events.length) + 1);
+    row.appendChild(strong);
+    row.appendChild(mark);
+    rail.appendChild(row);
+  });
+  var tabs = document.getElementById("tabs");
+  var phase = document.getElementById("phase");
+  var typed = document.getElementById("typed");
+  var cursor = 0;
+  var text = "open xpfirm.com";
+  function type() {
+    cursor = (cursor + 1) % (text.length + 10);
+    typed.textContent = text.slice(0, Math.min(cursor, text.length));
+    typed.appendChild(document.createElement("i")).className = "caret";
+  }
+  function show(n) {
+    var s = states[(n + states.length) % states.length];
+    phase.textContent = s[0];
+    Array.prototype.forEach.call(tabs.children, function (btn, idx) { btn.classList.toggle("on", idx === (n + states.length) % states.length); });
+  }
+  states.forEach(function (s, idx) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.textContent = s[0];
+    btn.addEventListener("click", function () { show(idx); });
+    tabs.appendChild(btn);
+  });
+  show(0);
+  if (!reduced) {
+    setInterval(type, 90);
+    setInterval(function () { show((["Prepare", "Hold", "Human"].indexOf(phase.textContent) + 1)); }, 2800);
+  } else {
+    typed.textContent = text;
+  }
+
+  var chart = document.getElementById("chart");
+  var cctx = chart.getContext("2d");
+  function drawChart(now) {
+    var dpr = Math.min(devicePixelRatio || 1, 2);
+    var w = chart.clientWidth, h = chart.clientHeight;
+    if (chart.width !== Math.floor(w * dpr)) {
+      chart.width = w * dpr; chart.height = h * dpr;
+    }
+    cctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    cctx.clearRect(0, 0, w, h);
+    var n = 28, pts = [];
+    for (var i = 0; i < n; i++) {
+      var x = 24 + i * ((w - 48) / (n - 1));
+      var wave = Math.sin(i * 0.45 + (reduced ? 0 : now / 900)) * 16;
+      var y = h - 40 - Math.pow(i / (n - 1), 1.35) * (h - 100) + wave;
+      pts.push([x, y]);
+    }
+    cctx.beginPath();
+    pts.forEach(function (p, i) { i ? cctx.lineTo(p[0], p[1]) : cctx.moveTo(p[0], p[1]); });
+    cctx.strokeStyle = "rgba(47,157,143,.45)";
+    cctx.lineWidth = 2;
+    cctx.stroke();
+    pts.forEach(function (p, i) {
+      cctx.fillStyle = i > n - 5 ? "#111a4a" : "#2f9d8f";
+      cctx.beginPath();
+      cctx.arc(p[0], p[1], i > n - 4 ? 5 : 3.4, 0, 6.3);
+      cctx.fill();
+    });
+    if (!reduced) requestAnimationFrame(drawChart);
+  }
+  requestAnimationFrame(drawChart);
+
+  var missions = [
+    ["XpFirm", "A trader risk and discipline workspace. Preparation, risk awareness, and consistent decisions — not a promise of returns. Free Core Forever. Transparent scope.", "https://xpfirm.com", "Open XpFirm"],
+    ["NakharaX Protocol", "A separate initiative, distinct from XpFirm, with its own identity and path. Public destination is not confirmed.", "", ""],
+    ["Hermes", "Hermes coordinates specialists under human direction. No customer trading authority. Conceptual architecture, not live telemetry.", "", ""]
+  ];
+  var nav = document.getElementById("mission-nav");
+  var face = document.getElementById("face");
+  function faceAt(i) {
+    face.replaceChildren();
+    var h = document.createElement("h3");
+    h.textContent = missions[i][0];
+    var p = document.createElement("p");
+    p.textContent = missions[i][1];
+    face.appendChild(h);
+    face.appendChild(p);
+    if (missions[i][2]) {
+      var a = document.createElement("a");
+      a.className = "ghost";
+      a.href = missions[i][2];
+      a.textContent = missions[i][3];
+      face.appendChild(a);
+    }
+    Array.prototype.forEach.call(nav.children, function (btn, idx) { btn.classList.toggle("on", idx === i); });
+  }
+  missions.forEach(function (m, idx) {
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.textContent = m[0];
+    btn.addEventListener("click", function () { faceAt(idx); });
+    nav.appendChild(btn);
+  });
+  faceAt(0);
 })();
 </script>
 </body>
